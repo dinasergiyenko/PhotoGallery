@@ -4,7 +4,8 @@ namespace PhotoGallery.BusinessLogicLayer.Interfaces
 {
     public interface IUserService
     {
-        bool IsUserExist(string login);
+        bool IsUserLoginExist(string login);
+        bool IsUserExist(int userId);
         bool AreCredentialsValid(string login, string password);
         User GetById(int id);
         User GetByLogin(string login);

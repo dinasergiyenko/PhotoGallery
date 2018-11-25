@@ -22,7 +22,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Add(Album album)
         {
-            if (_userService.GetById(album.UserId) == null)
+            if (!_userService.IsUserExist(album.UserId))
             {
                 throw new CustomValidationException("There is no such user.");
             }
@@ -33,7 +33,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public IEnumerable<Album> GetByUser(int userId)
         {
-            if (_userService.GetById(userId) == null)
+            if (!_userService.IsUserExist(userId))
             {
                 throw new CustomValidationException("There is no such user.");
             }

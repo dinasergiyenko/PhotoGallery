@@ -30,13 +30,6 @@ namespace PhotoGallery.BusinessLogicLayer.Services
                 .Any();
         }
 
-        public bool IsUserExist(string login)
-        {
-            return _unitOfWork.UserRepository
-                .Find(x => x.Login == login)
-                .Any();
-        }
-
         public User GetById(int id)
         {
             var user = _unitOfWork.UserRepository.Get(id);
@@ -65,7 +58,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Login(string login, string password)
         {
-            if (!IsUserExist(login))
+            if (!IsUserLoginExist(login))
             {
                 throw new CustomValidationException("There is no such user.");
             }
@@ -78,7 +71,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Register(User user)
         {
-            if (IsUserExist(user.Login))
+            if (IsUserLoginExist(user.Login))
             {
                 throw new CustomValidationException("User already exists.");
             }
@@ -89,14 +82,30 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             _unitOfWork.Commit();
         }
 
-        public void Update(User user)
+        public void Update(User newUser)
         {
-            if (!IsUserExist(user.Login))
-            {
-                throw new CustomValidationException("There is no such user.");
-            }
+            var oldUser = GetById(newUser.Id);
+
+            oldUser.FirstName = newUser.FirstName;
+            oldUser.LastName = newUser.LastName;
+            oldUser.City = newUser.City;
+            oldUser.Email = newUser.Email;
+            oldUser.FieldOfActivity = newUser.FieldOfActivity;
+            oldUser.Password = _encryptionService.Encrypt(newUser.Password);
 
             _unitOfWork.Commit();
+        }
+
+        public bool IsUserLoginExist(string login)
+        {
+            return _unitOfWork.UserRepository
+                .Find(x => x.Login == login)
+                .Any();
+        }
+
+        public bool IsUserExist(int userId)
+        {
+            return _unitOfWork.UserRepository.Get(userId) != null;
         }
     }
 }
