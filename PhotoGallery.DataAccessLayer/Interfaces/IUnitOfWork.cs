@@ -9,6 +9,8 @@ namespace PhotoGallery.DataAccessLayer.Interfaces
 
         IRepository<Album, int> AlbumRepository { get; }
 
+        IRepository<Photo, int> PhotoRepository { get; }
+
         void Commit();
 
         void Rollback();
