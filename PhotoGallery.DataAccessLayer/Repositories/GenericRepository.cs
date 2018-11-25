@@ -36,9 +36,14 @@ namespace PhotoGallery.DataAccessLayer.Repositories
             return _dbSet.AsEnumerable();
         }
 
-        public void Remove(TKey id)
+        public void RemoveById(TKey id)
         {
             var entity = _dbSet.Find(id);
+            _dbSet.Remove(entity);
+        }
+
+        public void Remove(TEntity entity)
+        {
             _dbSet.Remove(entity);
         }
     }

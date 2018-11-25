@@ -14,6 +14,8 @@ namespace PhotoGallery.DataAccessLayer.Interfaces
 
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
-        void Remove(TKey id);
+        void RemoveById(TKey id);
+
+        void Remove(TEntity entity);
     }
 }
