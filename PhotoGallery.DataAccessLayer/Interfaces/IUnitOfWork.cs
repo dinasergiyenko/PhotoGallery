@@ -11,6 +11,8 @@ namespace PhotoGallery.DataAccessLayer.Interfaces
 
         IRepository<Photo, int> PhotoRepository { get; }
 
+        IRepository<Comment, int> CommentRepository { get; }
+
         void Commit();
 
         void Rollback();
