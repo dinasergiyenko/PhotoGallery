@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,16 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  currentUser: User;
   title = 'Photo Gallery';
+
+  constructor(
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
+  }
+
+  logout() {
+    this.authenticationService.logout();
+  }
 }
