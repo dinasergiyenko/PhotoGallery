@@ -25,6 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PhotoGallery.BusinessLogicLayer\PhotoGallery.BusinessLogicLayer.csproj" />
+    <ProjectReference Include="..\PhotoGallery.Common\PhotoGallery.Common.csproj" />
     <ProjectReference Include="..\PhotoGallery.DataAccessLayer\PhotoGallery.DataAccessLayer.csproj" />
   </ItemGroup>
 

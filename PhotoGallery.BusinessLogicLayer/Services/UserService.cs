@@ -11,14 +11,17 @@ namespace PhotoGallery.BusinessLogicLayer.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEncryptionService _encryptionService;
+        private readonly ITokenCreator _tokenCreator;
 
         public UserService(
             IUnitOfWork unitOfWork,
-            IEncryptionService encryptionService
+            IEncryptionService encryptionService,
+            ITokenCreator tokenCreator
             )
         {
             _unitOfWork = unitOfWork;
             _encryptionService = encryptionService;
+            _tokenCreator = tokenCreator;
         }
 
         public bool AreCredentialsValid(string login, string password)
@@ -56,7 +59,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             return user;
         }
 
-        public void Login(string login, string password)
+        public string Login(string login, string password)
         {
             if (!IsUserLoginExist(login))
             {
@@ -67,6 +70,8 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             {
                 throw new CustomValidationException("Credentials are not valid.");
             }
+
+            return _tokenCreator.Generate();
         }
 
         public void Register(User user)
