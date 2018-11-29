@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoGallery.DataAccessLaye
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoGallery.BusinessLogicLayer", "PhotoGallery.BusinessLogicLayer\PhotoGallery.BusinessLogicLayer.csproj", "{A75BEAC3-ED48-436D-AD48-AA60E1A128C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGallery", "PhotoGallery\PhotoGallery.csproj", "{29B02258-085C-47BC-8A46-02BD8A301B18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoGallery", "PhotoGallery\PhotoGallery.csproj", "{29B02258-085C-47BC-8A46-02BD8A301B18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGallery.Common", "PhotoGallery.Common\PhotoGallery.Common.csproj", "{82F32CF7-059A-4002-99CE-341956224CCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{29B02258-085C-47BC-8A46-02BD8A301B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29B02258-085C-47BC-8A46-02BD8A301B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29B02258-085C-47BC-8A46-02BD8A301B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F32CF7-059A-4002-99CE-341956224CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F32CF7-059A-4002-99CE-341956224CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F32CF7-059A-4002-99CE-341956224CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F32CF7-059A-4002-99CE-341956224CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
