@@ -20,20 +20,30 @@ namespace PhotoGallery.Controllers
         }
 
         [AllowAnonymous]
-        public UserViewModel Login([FromBody]UserViewModel user)
+        public IActionResult Login([FromBody]LoginViewModel viewModel)
         {
-            var token = _userService.Login(user.Username, user.Password);
-            var loggedUser = _userService.GetByLogin(user.Username);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Login's properties are not valid.");
+            }
 
-            return new UserViewModel()
+            var token = _userService.Login(viewModel.Username, viewModel.Password);
+            var loggedUser = _userService.GetByLogin(viewModel.Username);
+
+            return Ok(new UserViewModel()
             {
                 Username = loggedUser.Login,
+                FirstName = loggedUser.FirstName,
+                LastName = loggedUser.LastName,
+                Email = loggedUser.Email,
+                City = loggedUser.City,
+                FieldOfActivity = loggedUser.FieldOfActivity,
                 Token = token
-            };
+            });
         }
 
         [AllowAnonymous]
-        public IActionResult Register([FromBody]RegistrationViewModel user)
+        public IActionResult Register([FromBody]RegistrationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -42,13 +52,13 @@ namespace PhotoGallery.Controllers
 
             _userService.Register(new User
             {
-                Login = user.Username,
-                Password = user.Password,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                City = user.City,
-                FieldOfActivity = user.FieldOfActivity
+                Login = viewModel.Username,
+                Password = viewModel.Password,
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
+                Email = viewModel.Email,
+                City = viewModel.City,
+                FieldOfActivity = viewModel.FieldOfActivity
             });
 
             return Ok();
