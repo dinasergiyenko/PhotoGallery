@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhotoGallery.BusinessLogicLayer.Interfaces;
@@ -11,12 +12,15 @@ namespace PhotoGallery.Controllers
     public class AuthenticationController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
         public AuthenticationController(
-            IUserService userService
+            IUserService userService,
+            IMapper mapper
             )
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [AllowAnonymous]
@@ -30,16 +34,10 @@ namespace PhotoGallery.Controllers
             var token = _userService.Login(viewModel.Username, viewModel.Password);
             var loggedUser = _userService.GetByLogin(viewModel.Username);
 
-            return Ok(new UserViewModel()
-            {
-                Username = loggedUser.Login,
-                FirstName = loggedUser.FirstName,
-                LastName = loggedUser.LastName,
-                Email = loggedUser.Email,
-                City = loggedUser.City,
-                FieldOfActivity = loggedUser.FieldOfActivity,
-                Token = token
-            });
+            var model = _mapper.Map<UserViewModel>(loggedUser);
+            model.Token = token;
+
+            return Ok(model);
         }
 
         [AllowAnonymous]
@@ -50,16 +48,7 @@ namespace PhotoGallery.Controllers
                 return BadRequest("User's properties are not valid.");
             }
 
-            _userService.Register(new User
-            {
-                Login = viewModel.Username,
-                Password = viewModel.Password,
-                FirstName = viewModel.FirstName,
-                LastName = viewModel.LastName,
-                Email = viewModel.Email,
-                City = viewModel.City,
-                FieldOfActivity = viewModel.FieldOfActivity
-            });
+            _userService.Register(_mapper.Map<User>(viewModel));
 
             return Ok();
         }
