@@ -13,6 +13,7 @@ using PhotoGallery.BusinessLogicLayer.Services;
 using PhotoGallery.Common.Settings;
 using PhotoGallery.DataAccessLayer;
 using PhotoGallery.DataAccessLayer.Interfaces;
+using PhotoGallery.Middlewares;
 using System.Text;
 
 namespace PhotoGallery
@@ -89,6 +90,7 @@ namespace PhotoGallery
             app.UseSpaStaticFiles();
 
             app.UseAuthentication();
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseMvc(routes =>
             {
