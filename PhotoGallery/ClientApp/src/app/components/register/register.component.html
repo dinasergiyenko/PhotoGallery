@@ -1,0 +1,57 @@
+<p>
+  register works!
+</p>
+
+<div *ngIf="isRegistered">
+  The user is registered. Now you can login <a routerLink="/login">here</a>.
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" formControlName="username" />
+    <div *ngIf="(isSubmitted || formControls.username.dirty || formControls.username.touched) && formControls.username.errors">
+      <div *ngIf="formControls.username.errors.required">Username is required</div>
+    </div>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" />
+    <div *ngIf="(isSubmitted || formControls.password.dirty || formControls.password.touched) && formControls.password.errors">
+      <div *ngIf="formControls.password.errors.required">Password is required</div>
+    </div>
+  </div>
+  <div>
+    <label for="firstName">First Name</label>
+    <input type="text" formControlName="firstName" />
+    <div *ngIf="(isSubmitted || formControls.firstName.dirty || formControls.firstName.touched) && formControls.firstName.errors">
+      <div *ngIf="formControls.firstName.errors.required">First Name is required</div>
+    </div>
+  </div>
+  <div>
+    <label for="lastName">Last Name</label>
+    <input type="text" formControlName="lastName" />
+    <div *ngIf="(isSubmitted || formControls.lastName.dirty || formControls.lastName.touched) && formControls.lastName.errors">
+      <div *ngIf="formControls.lastName.errors.required">Last Name is required</div>
+    </div>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="text" formControlName="email" />
+    <div *ngIf="(isSubmitted || formControls.email.dirty || formControls.email.touched) && formControls.email.errors">
+      <div *ngIf="formControls.email.errors.required">Email is required</div>
+      <div *ngIf="formControls.email.errors.email">Email has wrong format</div>
+    </div>
+  </div>
+  <div>
+    <label for="city">City</label>
+    <input type="text" formControlName="city" />
+  </div>
+  <div>
+    <label for="fieldOfActivity">Field Of Activity</label>
+    <input type="text" formControlName="fieldOfActivity" />
+  </div>
+  <div>
+    <button [disabled]="loading">Register</button>
+  </div>
+</form>

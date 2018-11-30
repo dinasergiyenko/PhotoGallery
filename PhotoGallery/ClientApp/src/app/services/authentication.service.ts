@@ -28,6 +28,10 @@ export class AuthenticationService {
       }));
   }
 
+  register(user: User){
+    return this.http.post('/api/Authentication/Register', user);
+  }
+
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUser.next(null);
