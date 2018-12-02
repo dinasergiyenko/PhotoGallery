@@ -1,4 +1,16 @@
-<a routerLink="/login">Login</a>
-<a routerLink="/register">Register</a>
-
-<router-outlet></router-outlet>
+<mat-sidenav-container class="main-container" fullscreen hasBackdrop="false">
+    <mat-sidenav #sidenav mode="push"> 
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <button mat-button routerLink="/login">Login</button>
+            </mat-toolbar-row>
+            <mat-toolbar-row>
+                <button mat-button routerLink="/register">Register</button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button (click)="sidenav.toggle()" style="position: absolute">Open</button>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
