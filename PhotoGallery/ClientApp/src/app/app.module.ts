@@ -15,13 +15,15 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { AuthGuard } from './guards/auth.guard';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

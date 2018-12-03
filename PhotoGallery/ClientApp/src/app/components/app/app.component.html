@@ -1,11 +1,14 @@
 <mat-sidenav-container class="main-container" fullscreen hasBackdrop="false">
     <mat-sidenav #sidenav mode="push"> 
         <mat-toolbar color="primary">
-            <mat-toolbar-row>
+            <mat-toolbar-row *ngIf="!isLogged()">
                 <button mat-button routerLink="/login">Login</button>
             </mat-toolbar-row>
-            <mat-toolbar-row>
+            <mat-toolbar-row *ngIf="!isLogged()">
                 <button mat-button routerLink="/register">Register</button>
+            </mat-toolbar-row>
+            <mat-toolbar-row *ngIf="isLogged()">
+                <logout></logout>
             </mat-toolbar-row>
         </mat-toolbar>
     </mat-sidenav>
