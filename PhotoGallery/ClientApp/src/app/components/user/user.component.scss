@@ -1,0 +1,17 @@
+.albums-grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.albums-grid-title{
+    padding-left: 20px;
+}
+
+.user-page-container{
+    display: flex;
+    padding: 20px;
+}
+
+.user-card{
+    min-width: 300px;
+}

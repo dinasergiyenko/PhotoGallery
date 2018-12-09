@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using PhotoGallery.BusinessLogicLayer.Interfaces;
 using PhotoGallery.DataAccessLayer.Entities;
 using PhotoGallery.Models;
-using System.Linq;
-using System.Security.Claims;
+using System.Collections.Generic;
 
 namespace PhotoGallery.Controllers
 {
@@ -28,12 +27,22 @@ namespace PhotoGallery.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Get(int id)
         {
             var album = _albumService.GetById(id);
 
             return Ok(_mapper.Map<AlbumViewModel>(album));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult GetAll(int userId)
+        {
+            var albums = _albumService.GetByUser(userId);
+
+            return Ok(_mapper.Map<IEnumerable<AlbumViewModel>>(albums));
         }
 
         [HttpPost]

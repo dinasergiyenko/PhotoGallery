@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Album } from 'src/app/models/album';
 import { AlbumService } from 'src/app/services/album.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'update-album',
@@ -16,7 +15,8 @@ export class UpdateAlbumComponent implements OnInit {
 
   constructor(
     private albumService: AlbumService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,9 +34,9 @@ export class UpdateAlbumComponent implements OnInit {
   onSubmit(album: Album) {
     this.albumService.update(album)
       .subscribe(
-        data => {
-          console.log(data);
-          //ToDo: add redirection to user's profile
+        userId => {
+          console.log(userId);
+          this.router.navigate(['/user', userId]);
         },
         error => {
           this.loading = false;

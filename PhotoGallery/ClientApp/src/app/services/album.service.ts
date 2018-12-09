@@ -18,6 +18,12 @@ export class AlbumService {
         return this.http.get<Album>('/api/Album/Get', params);
     }
 
+    getAll(userId: string){
+        let params = { params: new HttpParams().set('userId', userId)};
+
+        return this.http.get<Album[]>('/api/Album/GetAll', params);
+    }
+
     update(album: Album){
         return this.http.post('/api/Album/Update', album);
     }

@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Album } from 'src/app/models/album';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'album-form',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'add-album',
@@ -13,14 +14,14 @@ export class AddAlbumComponent {
 
   constructor(
     private albumService: AlbumService,
+    private router: Router
   ) { }
 
   onSubmit(album: Album) {
     this.albumService.add(album.title, album.description)
       .subscribe(
-        data => {
-          console.log(data);
-          //ToDo: add redirection to user's profile
+        userId => {
+          this.router.navigate(['/user', userId]);
         },
         error => {
           this.loading = false;

@@ -86,7 +86,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             }
 
             oldAlbum.Title = newAlbum.Title;
-            oldAlbum.Descirption = newAlbum.Descirption;
+            oldAlbum.Description = newAlbum.Description;
 
             _unitOfWork.Commit();
         }

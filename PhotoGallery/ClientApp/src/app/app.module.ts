@@ -20,6 +20,9 @@ import { AddAlbumComponent } from './components/add-album/add-album.component';
 import { AlbumService } from './services/album.service';
 import { AlbumFormComponent } from './components/album-form/album-form.component';
 import { UpdateAlbumComponent } from './components/update-album/update-album.component';
+import { UserComponent } from './components/user/user.component';
+import { UserService } from './services/user.service';
+import { AlbumCardComponent } from './components/album-card/album-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { UpdateAlbumComponent } from './components/update-album/update-album.com
     LogoutComponent,
     AddAlbumComponent,
     AlbumFormComponent,
-    UpdateAlbumComponent
+    UpdateAlbumComponent,
+    UserComponent,
+    AlbumCardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ import { UpdateAlbumComponent } from './components/update-album/update-album.com
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     AuthGuard,
-    AlbumService
+    AlbumService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
