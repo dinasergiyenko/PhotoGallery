@@ -1,40 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { AlbumService } from 'src/app/services/album.service';
+import { Album } from 'src/app/models/album';
 
 @Component({
   selector: 'add-album',
   templateUrl: './add-album.component.html',
   styleUrls: ['./add-album.component.scss']
 })
-export class AddAlbumComponent implements OnInit {
-  private addAlbumForm: FormGroup;
+export class AddAlbumComponent {
   private loading = false;
+  private album = new Album();
 
   constructor(
-    private formBuilder: FormBuilder,
-    private albumService: AlbumService
+    private albumService: AlbumService,
   ) { }
 
-  ngOnInit() {
-    this.addAlbumForm = this.formBuilder.group({
-      title: [null, Validators.required],
-      description: [null]
-    })
-  }
-
-  get formControls() {
-    return this.addAlbumForm.controls;
-  }
-
-  onSubmit() {
-    if (this.addAlbumForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-
-    this.albumService.addAlbum(this.formControls.title.value, this.formControls.description.value)
+  onSubmit(album: Album) {
+    this.albumService.add(album.title, album.description)
       .subscribe(
         data => {
           console.log(data);

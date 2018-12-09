@@ -18,6 +18,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AddAlbumComponent } from './components/add-album/add-album.component';
 import { AlbumService } from './services/album.service';
+import { AlbumFormComponent } from './components/album-form/album-form.component';
+import { UpdateAlbumComponent } from './components/update-album/update-album.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AlbumService } from './services/album.service';
     RegisterComponent,
     AlertComponent,
     LogoutComponent,
-    AddAlbumComponent
+    AddAlbumComponent,
+    AlbumFormComponent,
+    UpdateAlbumComponent
   ],
   imports: [
     BrowserModule,

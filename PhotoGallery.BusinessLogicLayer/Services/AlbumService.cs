@@ -80,6 +80,11 @@ namespace PhotoGallery.BusinessLogicLayer.Services
                 throw new CustomValidationException("There is no album to update.");
             }
 
+            if (oldAlbum.UserId != newAlbum.UserId)
+            {
+                throw new CustomValidationException("The logged user cannot update this album.");
+            }
+
             oldAlbum.Title = newAlbum.Title;
             oldAlbum.Descirption = newAlbum.Descirption;
 

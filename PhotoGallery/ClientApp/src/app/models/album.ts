@@ -1,6 +1,5 @@
 export class Album {
-    constructor(
-        public title: string,
-        public description: string
-    ) { }
+    id: number;
+    title: string;
+    description: string;
 }

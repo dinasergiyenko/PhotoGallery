@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmit()" #albumForm="ngForm" class="form">
+  <mat-form-field>
+    <input matInput placeholder="Title" type="text" required
+      name="title" id="title"
+      [ngModel]="album?.title" 
+      (ngModelChange)="album.title=$event" 
+      #title="ngModel" />
+    <mat-error [hidden]="title.valid || title.pristine">Title is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" type="text" rows="4"
+      name="description" id="description"
+      [ngModel]="album?.description"
+      (ngModelChange)="album.description=$event">
+    </textarea>
+  </mat-form-field>
+  <button mat-button [disabled]="loading || !albumForm.form.valid">Save Album</button>
+</form>
