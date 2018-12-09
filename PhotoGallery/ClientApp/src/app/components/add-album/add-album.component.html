@@ -1,0 +1,21 @@
+<div class="add-album-container">
+  <mat-card class="add-album-card">
+      <mat-card-header>
+          <i mat-card-avatar class="material-icons">photo_album</i>
+          <mat-card-title>Album Creation Page</mat-card-title>
+          <mat-card-subtitle>Please, fill the form to add a new album</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+          <form [formGroup]="addAlbumForm" (ngSubmit)="onSubmit()" class="form">
+              <mat-form-field>
+                  <input matInput placeholder="Title" type="text" formControlName="title" />
+                  <mat-error *ngIf="formControls.title.invalid">Title is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                  <textarea matInput placeholder="Description" type="text" formControlName="description" rows="4"></textarea>
+              </mat-form-field>
+              <button mat-button [disabled]="loading">Create</button>
+          </form>
+      </mat-card-content>
+  </mat-card>
+</div>

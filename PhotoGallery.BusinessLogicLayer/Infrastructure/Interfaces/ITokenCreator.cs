@@ -2,6 +2,6 @@
 {
     public interface ITokenCreator
     {
-        string Generate();
+        string Generate(string userIdentifier);
     }
 }

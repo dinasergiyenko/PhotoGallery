@@ -15,6 +15,8 @@ namespace PhotoGallery.Mappings
 
             CreateMap<RegistrationViewModel, User>()
                 .ForMember(dest => dest.Login, options => options.MapFrom(src => src.Username));
+
+            CreateMap<AlbumViewModel, Album>();
         }
     }
 }

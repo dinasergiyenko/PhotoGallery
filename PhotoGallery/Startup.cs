@@ -73,6 +73,7 @@ namespace PhotoGallery
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<ITokenCreator, JwtBearerTokenCreator>();
+            services.AddScoped<IAlbumService, AlbumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

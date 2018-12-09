@@ -71,7 +71,9 @@ namespace PhotoGallery.BusinessLogicLayer.Services
                 throw new CustomValidationException("Credentials are not valid.");
             }
 
-            return _tokenCreator.Generate();
+            var user = GetByLogin(login);
+
+            return _tokenCreator.Generate(user.Id.ToString());
         }
 
         public void Register(User user)

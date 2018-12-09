@@ -16,6 +16,8 @@ import { AlertComponent } from './components/alert/alert.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AddAlbumComponent } from './components/add-album/add-album.component';
+import { AlbumService } from './services/album.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     RegisterComponent,
     AlertComponent,
-    LogoutComponent
+    LogoutComponent,
+    AddAlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    AuthGuard
+    AuthGuard,
+    AlbumService
   ],
   bootstrap: [AppComponent]
 })
