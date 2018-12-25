@@ -23,6 +23,12 @@ import { UpdateAlbumComponent } from './components/update-album/update-album.com
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
+import { AddPhotoComponent } from './components/add-photo/add-photo.component';
+import { PhotoFormComponent } from './components/photo-form/photo-form.component';
+import { PhotoService } from './services/photo.service';
+import { UpdatePhotoComponent } from './components/update-photo/update-photo.component';
+import { AlbumPageComponent } from './components/album-page/album-page.component';
+import { PhotoCardComponent } from './components/photo-card/photo-card.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,12 @@ import { AlbumCardComponent } from './components/album-card/album-card.component
     AlbumFormComponent,
     UpdateAlbumComponent,
     UserComponent,
-    AlbumCardComponent
+    AlbumCardComponent,
+    AddPhotoComponent,
+    PhotoFormComponent,
+    UpdatePhotoComponent,
+    AlbumPageComponent,
+    PhotoCardComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +65,8 @@ import { AlbumCardComponent } from './components/album-card/album-card.component
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     AuthGuard,
     AlbumService,
-    UserService
+    UserService,
+    PhotoService
   ],
   bootstrap: [AppComponent]
 })

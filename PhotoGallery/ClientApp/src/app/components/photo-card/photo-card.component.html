@@ -1,0 +1,14 @@
+<div class="photo-container">
+    <mat-card class="photo-card">
+      <img mat-card-image class="photo-card-image" [src]="photo.path"/>
+      <mat-card-content>
+        <p><b>{{photo.title}}</b></p>
+        <p>{{photo.description}}</p>
+        <p>{{photo.creationDate}}</p>
+      </mat-card-content>
+      <mat-card-actions *ngIf="canUpdate">
+        <button mat-button [routerLink]="['/update-photo', photo.id]">Update</button>
+        <button mat-button>Remove</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

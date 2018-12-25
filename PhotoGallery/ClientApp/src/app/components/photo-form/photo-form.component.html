@@ -1,0 +1,33 @@
+<form (ngSubmit)="onSubmit()" #photoForm="ngForm" class="form">
+
+  <div class="photo-file-field" *ngIf="photo?.id === undefined">
+      <input type="file" style="display: none" id="file" (change)="onFileUpload($event)" />
+      <label for="file" mat-button>
+        <a mat-stroked-button color="primary" (click)="onChoosePhotoDialog()">Choose photo</a>
+        <div class="photo-file-name" *ngIf="photo?.file != null">{{photo.file.name}}</div>
+      </label>
+      <mat-error *ngIf="fileUploadButtonTouched && photo.file == null">Photo is required</mat-error>
+  </div>
+
+  <mat-form-field>
+    <mat-select placeholder="Album" [ngModel]="photo?.albumId" (ngModelChange)="photo.albumId=$event" name="albumId"
+      required #albumId="ngModel">
+      <mat-option *ngFor="let album of albums" [value]="album.id">
+        {{album.title}}
+      </mat-option>
+    </mat-select>
+    <mat-error [hidden]="albumId.valid || albumId.pristine">Album is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Title" type="text" required name="title" id="title" [ngModel]="photo?.title"
+      (ngModelChange)="photo.title=$event" #title="ngModel" />
+    <mat-error [hidden]="title.valid || title.pristine">Title is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" type="text" rows="4" name="description" id="description" [ngModel]="photo?.description"
+      (ngModelChange)="photo.description=$event">
+    </textarea>
+  </mat-form-field>
+
+  <button mat-button [disabled]="loading || !photoForm.form.valid">Save Photo</button>
+</form>
