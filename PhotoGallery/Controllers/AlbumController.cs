@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using PhotoGallery.BusinessLogicLayer.Interfaces;
 using PhotoGallery.DataAccessLayer.Entities;
@@ -32,7 +33,7 @@ namespace PhotoGallery.Controllers
         public IActionResult Get(int id)
         {
             var album = _albumService.GetById(id);
-
+            
             return Ok(_mapper.Map<AlbumViewModel>(album));
         }
 

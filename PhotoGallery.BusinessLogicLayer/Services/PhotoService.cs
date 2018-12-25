@@ -41,6 +41,18 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             return _unitOfWork.PhotoRepository.Find(x => x.Album.UserId == userId);
         }
 
+        public Photo GetById(int photoId)
+        {
+            var photo = _unitOfWork.PhotoRepository.Get(photoId);
+
+            if (photo == null)
+            {
+                throw new CustomValidationException("There is no such photo.");
+            }
+
+            return photo;
+        }
+
         public bool IsPhotoExist(int photoId)
         {
             return _unitOfWork.PhotoRepository.Get(photoId) != null;
@@ -70,6 +82,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
             oldPhoto.Title = newPhoto.Title;
             oldPhoto.Description = newPhoto.Description;
+            oldPhoto.AlbumId = newPhoto.AlbumId;
 
             _unitOfWork.Commit();
         }

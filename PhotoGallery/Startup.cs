@@ -15,6 +15,7 @@ using PhotoGallery.Common.Settings;
 using PhotoGallery.DataAccessLayer;
 using PhotoGallery.DataAccessLayer.Interfaces;
 using PhotoGallery.Middlewares;
+using PhotoGallery.Services;
 using System.Text;
 
 namespace PhotoGallery
@@ -74,6 +75,9 @@ namespace PhotoGallery
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<ITokenCreator, JwtBearerTokenCreator>();
             services.AddScoped<IAlbumService, AlbumService>();
+            services.AddScoped<IPhotoService, PhotoService>();
+
+            services.AddScoped<IFileUploadService, FileUploadService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
