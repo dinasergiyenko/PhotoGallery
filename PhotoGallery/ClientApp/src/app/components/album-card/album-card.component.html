@@ -2,14 +2,14 @@
   <mat-card class="album-card">
     <mat-card-header>
       <i mat-card-avatar class="material-icons">photo_album</i>
-      <mat-card-title>{{album.title}}</mat-card-title>
+      <mat-card-title><a [routerLink]="['/album', album.id]">{{album.title}}</a></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>{{album.description}}</p>
     </mat-card-content>
-    <mat-card-actions *ngIf="album.userId == userId">
-      <button mat-button [routerLink]="['/update-album', album.id]">Update</button>
-      <button mat-button>Remove</button>
+    <mat-card-actions *ngIf="album.userId == userId" class="card-actions">
+      <i [routerLink]="['/update-album', album.id]" mat-card-avatar class="material-icons">edit</i>
+      <i mat-card-avatar class="material-icons">delete</i>
     </mat-card-actions>
   </mat-card>
 </div>
