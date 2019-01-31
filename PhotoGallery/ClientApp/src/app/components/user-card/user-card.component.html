@@ -1,0 +1,11 @@
+<mat-card class="user-card">
+    <mat-card-header>
+      <i mat-card-avatar class="material-icons">face</i>
+      <mat-card-title>{{user?.username}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{displayName}}<br/>{{user?.city}}, {{user?.fieldOfActivity}}</p>
+      <p class="card-content-label">Contacts:</p>
+      <a [href]="mailToLink">{{user?.email}}</a>
+    </mat-card-content>
+  </mat-card>

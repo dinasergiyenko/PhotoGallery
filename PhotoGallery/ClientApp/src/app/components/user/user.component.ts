@@ -30,7 +30,10 @@ export class UserComponent implements OnInit {
         let userId = params.get('id');
 
         this.userService.get(userId).subscribe(
-          user => this.user = user
+          user => {
+            this.user = user;
+
+          }
         )
 
         this.ablumService.getAll(userId).subscribe(

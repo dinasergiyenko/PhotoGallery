@@ -29,6 +29,7 @@ import { PhotoService } from './services/photo.service';
 import { UpdatePhotoComponent } from './components/update-photo/update-photo.component';
 import { AlbumPageComponent } from './components/album-page/album-page.component';
 import { PhotoCardComponent } from './components/photo-card/photo-card.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PhotoCardComponent } from './components/photo-card/photo-card.component
     PhotoFormComponent,
     UpdatePhotoComponent,
     AlbumPageComponent,
-    PhotoCardComponent
+    PhotoCardComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

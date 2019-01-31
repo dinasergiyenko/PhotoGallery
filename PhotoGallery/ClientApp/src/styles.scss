@@ -10,3 +10,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: column;
     margin: 10px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
