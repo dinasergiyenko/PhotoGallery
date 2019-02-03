@@ -9,6 +9,7 @@ import { UserComponent } from './components/user/user.component';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 import { UpdatePhotoComponent } from './components/update-photo/update-photo.component';
 import { AlbumPageComponent } from './components/album-page/album-page.component';
+import { PhotoPageComponent } from './components/photo-page/photo-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'user/:id', component: UserComponent },
   { path: 'add-photo', component: AddPhotoComponent },
   { path: 'update-photo/:id', component: UpdatePhotoComponent },
-  { path: 'album/:id', component: AlbumPageComponent }
+  { path: 'album/:id', component: AlbumPageComponent },
+  { path: 'photo/:id', component: PhotoPageComponent }
 ];
 
 @NgModule({

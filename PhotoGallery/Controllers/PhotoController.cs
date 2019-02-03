@@ -52,10 +52,10 @@ namespace PhotoGallery.Controllers
                 return BadRequest("User credentials are not valid.");
             }
 
-            var filePath = _fileUploadService.Upload(viewModel.File, _hostingEnvironment.WebRootPath);
+            var fileName = _fileUploadService.Upload(viewModel.File, _hostingEnvironment.WebRootPath);
 
             var photo = _mapper.Map<Photo>(viewModel);
-            photo.Path = filePath;
+            photo.Path = fileName;
             photo.CreationDate = DateTime.Now;
 
             _photoService.Add(photo);
@@ -68,7 +68,7 @@ namespace PhotoGallery.Controllers
         public IActionResult Get(int id)
         {
             var photo = _photoService.GetById(id);
-            
+
             return Ok(_mapper.Map<PhotoViewModel>(photo));
         }
 
@@ -77,10 +77,7 @@ namespace PhotoGallery.Controllers
         public IActionResult GetByAlbum(int albumId)
         {
             var photos = _photoService.GetByAlbumId(albumId);
-            foreach(var photo in photos)
-            {
-                photo.Path = "pm3eksov.png";
-            }
+
             return Ok(_mapper.Map<IEnumerable<PhotoViewModel>>(photos));
         }
 

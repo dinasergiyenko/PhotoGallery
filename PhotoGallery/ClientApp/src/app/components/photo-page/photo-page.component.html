@@ -1,0 +1,13 @@
+<div class="page-container">
+  <div class="info-bar">
+    <div class="info-bar-item">
+      <user-card *ngIf="user" [user]="user" [isCurrentUser]="isCurrentUser"></user-card>
+    </div>
+    <div class="info-bar-item">
+      <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser"></album-card>
+    </div>
+  </div>
+  <div class="grid">
+      <photo-card *ngIf="photo" [photo]="photo" [isCurrentUser]="isCurrentUser()"></photo-card>
+  </div>
+</div>

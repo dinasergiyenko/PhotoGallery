@@ -8,7 +8,7 @@ import { Photo } from 'src/app/models/photo';
 })
 export class PhotoCardComponent implements OnInit {
   @Input() photo: Photo;
-  @Input() canUpdate: boolean;
+  @Input() isCurrentUser: boolean;
 
   constructor() { }
 

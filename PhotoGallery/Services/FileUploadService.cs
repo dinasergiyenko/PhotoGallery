@@ -9,7 +9,7 @@ namespace PhotoGallery.Services
         public string Upload(IFormFile file, string folderPath)
         {
             var originExtenstion = Path.GetExtension(file.FileName);
-            var fileName = $"{new Guid()}.{originExtenstion}";
+            var fileName = $"{Guid.NewGuid()}{originExtenstion}";
             var filePath = Path.Combine(folderPath, fileName);
 
             if (file.Length > 0)
@@ -20,7 +20,7 @@ namespace PhotoGallery.Services
                 }
             }
 
-            return filePath;
+            return fileName;
         }
     }
 }
