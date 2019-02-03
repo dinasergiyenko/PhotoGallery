@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AlbumCardComponent implements OnInit {
   @Input() album: Album;
-  @Input() userId: number;
+  @Input() isCurrentUser: boolean;
 
   constructor(
     private route: ActivatedRoute

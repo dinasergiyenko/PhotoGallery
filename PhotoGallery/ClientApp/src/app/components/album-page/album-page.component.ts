@@ -15,6 +15,8 @@ import { Album } from 'src/app/models/album';
 })
 export class AlbumPageComponent implements OnInit {
 
+  private user: User;
+  //private isCurrentUser: boolean;
   private currentUser: User;
   private photos: Photo[];
   private album: Album;
@@ -23,6 +25,7 @@ export class AlbumPageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private photoService: PhotoService,
     private albumService: AlbumService,
+    private userService: UserService,
     private route: ActivatedRoute
   ) { }
 
@@ -32,22 +35,32 @@ export class AlbumPageComponent implements OnInit {
         let albumId = params.get('id');
 
         this.albumService.get(albumId).subscribe(
-          album => this.album = album
+          album => {
+            this.album = album;
+            this.userService.get(this.album.userId.toString()).subscribe(
+              user => {
+                this.user = user;
+              }
+            )
+
+            this.authenticationService.currentUser
+              .subscribe(
+                user => {
+                  this.currentUser = user;
+                  //this.isCurrentUser = this.currentUser.id == this.album.userId;
+                }
+              )
+          }
         )
 
         this.photoService.getByAlbum(albumId).subscribe(
           photos => this.photos = photos
         )
-
-        this.authenticationService.currentUser
-          .subscribe(
-            user => this.currentUser = user
-          )
       }
     )
   }
 
-  canUpdate(){
+  isCurrentUser() {
     return this.currentUser && this.album && this.currentUser.id == this.album.userId;
   }
 }

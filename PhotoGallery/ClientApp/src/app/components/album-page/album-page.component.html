@@ -1,27 +1,15 @@
-<div class="album-page-container">
-    <div class="album-container">
-        <mat-card class="album-card">
-          <mat-card-header>
-            <i mat-card-avatar class="material-icons">photo_album</i>
-            <mat-card-title>{{album?.title}}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{album?.description}}</p>
-            
-          </mat-card-content>
-          <mat-card-actions *ngIf="album != null">
-            <a mat-button [routerLink]="['/update-album', album.id]" *ngIf="canUpdate()">Update Details</a>
-            <a mat-button [routerLink]="['/user', album.userId]">Go to User</a>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    
-    <div>
-      <div class="photos-grid-title">
-        Photos
-      </div>
-      <div *ngIf="photos != null" class="photos-grid">
-          <photo-card *ngFor="let photo of photos" [photo]="photo" [canUpdate]="canUpdate()"></photo-card>
-        </div>
+<div class="page-container">
+  <div class="info-bar">
+    <div class="info-bar-item">
+      <user-card *ngIf="user" [user]="user" [isCurrentUser]="isCurrentUser"></user-card>
     </div>
+    <div class="info-bar-item">
+      <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser"></album-card>
+    </div>
+  </div>
+  <div *ngIf="photos != null" class="grid">
+    <div *ngFor="let photo of photos" class="grid-item">
+      <photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()"></photo-card>
+    </div>
+  </div>
 </div>

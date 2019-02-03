@@ -1,8 +1,12 @@
-<div class="user-page-container">
-    <div class="user-container">
-      <user-card [user]="user"></user-card>
-      </div>
-      <div *ngIf="albums != null" class="albums-grid">
-          <album-card *ngFor="let album of albums" [album]="album" [userId]="currentUser.id"></album-card>
-        </div>
+<div class="page-container">
+  <div class="info-bar">
+    <div class="info-bar-item">
+        <user-card *ngIf="user" [user]="user"></user-card>
+    </div>
+  </div>
+  <div *ngIf="albums != null" class="grid">
+    <div *ngFor="let album of albums" class="grid-item">
+        <album-card [album]="album" [isCurrentUser]="currentUser.id == album.userId"></album-card>
+    </div>
+  </div>
 </div>
