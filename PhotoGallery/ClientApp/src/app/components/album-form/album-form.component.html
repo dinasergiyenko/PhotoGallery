@@ -8,7 +8,7 @@
     <mat-error [hidden]="title.valid || title.pristine">Title is required</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Description" type="text" rows="4"
+    <textarea matInput placeholder="Description" type="text" rows="5"
       name="description" id="description"
       [ngModel]="album?.description"
       (ngModelChange)="album.description=$event">

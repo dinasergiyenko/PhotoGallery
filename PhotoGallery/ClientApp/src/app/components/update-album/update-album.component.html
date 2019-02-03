@@ -1,12 +1,14 @@
-<div class="update-album-container">
-  <mat-card class="update-album-card">
-      <mat-card-header>
-          <i mat-card-avatar class="material-icons">photo_album</i>
-          <mat-card-title>Album Edit Page</mat-card-title>
-          <mat-card-subtitle>Please, fill the form to edit the album</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-          <album-form (onParentSubmit)="onSubmit($event)" [(loading)]="loading" [album]="album"></album-form>
-      </mat-card-content>
-  </mat-card>
+<div class="update-page-container">
+    <div class="update-card-wrapper">
+        <mat-card>
+            <mat-card-header>
+                <i mat-card-avatar class="material-icons">photo_album</i>
+                <mat-card-title>Album Edit Page</mat-card-title>
+                <mat-card-subtitle>Please, fill the form to edit the album</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <album-form (onParentSubmit)="onSubmit($event)" [(loading)]="loading" [album]="album"></album-form>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

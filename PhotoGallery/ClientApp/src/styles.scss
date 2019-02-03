@@ -26,6 +26,13 @@ p {
     padding: 20px;
 }
 
+.update-page-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
 .info-bar {
     min-width: 270px;
     width: 270px;
@@ -38,6 +45,10 @@ p {
 
 .card-wrapper {
     width: 100%;
+}
+
+.update-card-wrapper {
+    min-width: 25%;
 }
 
 .card-content-label {
