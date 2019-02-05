@@ -5,7 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: ['./app.component.scss']
+  styleUrls: ['./app.component.scss']
 })
 
 export class AppComponent {
