@@ -9,6 +9,7 @@ using PhotoGallery.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 
 namespace PhotoGallery.Controllers
 {
@@ -70,6 +71,20 @@ namespace PhotoGallery.Controllers
             var photo = _photoService.GetById(id);
 
             return Ok(_mapper.Map<PhotoViewModel>(photo));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult GetPhotoPage(int id)
+        {
+            var photo = _photoService.GetById(id);
+
+            return Ok(new PhotoPageViewModel
+            {
+                Photo = _mapper.Map<PhotoViewModel>(photo),
+                Album = _mapper.Map<AlbumViewModel>(photo.Album),
+                User = _mapper.Map<UserViewModel>(photo.Album.User)
+            });
         }
 
         [AllowAnonymous]

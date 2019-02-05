@@ -39,6 +39,20 @@ namespace PhotoGallery.Controllers
 
         [AllowAnonymous]
         [HttpGet]
+        public IActionResult GetAlbumPage(int id)
+        {
+            var album = _albumService.GetById(id);
+
+            return Ok(new AlbumPageViewModel
+            {
+                Album = _mapper.Map<AlbumViewModel>(album),
+                User = _mapper.Map<UserViewModel>(album.User),
+                Photos = _mapper.Map<IEnumerable<PhotoViewModel>>(album.Photos)
+            });
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
         public IActionResult GetAll(int userId)
         {
             var albums = _albumService.GetByUser(userId);

@@ -34,5 +34,19 @@ namespace PhotoGallery.Controllers
 
             return Ok(_mapper.Map<UserViewModel>(user));
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult GetUserPage(int userId)
+        {
+            var user = _userService.GetById(userId);
+
+            return Ok(new UserPageViewModel
+            {
+                User = _mapper.Map<UserViewModel>(user),
+                Albums = _mapper.Map<IEnumerable<AlbumViewModel>>(user.Albums)
+            });
+
+        }
     }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
-import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -20,7 +19,6 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private ablumService: AlbumService,
     private authenticationService: AuthenticationService
   ) { }
 
@@ -28,17 +26,11 @@ export class UserComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         let userId = params.get('id');
-
-        this.userService.get(userId).subscribe(
-          user => {
-            this.user = user;
-
-          }
-        )
-
-        this.ablumService.getAll(userId).subscribe(
-          albums => this.albums = albums
-        )
+        this.userService.getUserPage(userId)
+          .subscribe(userPage => {
+            this.user = userPage.user;
+            this.albums = userPage.albums
+          })
 
         this.authenticationService.currentUser.subscribe(
           user => this.currentUser = user
