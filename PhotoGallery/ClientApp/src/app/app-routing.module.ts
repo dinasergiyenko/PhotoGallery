@@ -10,10 +10,10 @@ import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 import { UpdatePhotoComponent } from './components/update-photo/update-photo.component';
 import { AlbumPageComponent } from './components/album-page/album-page.component';
 import { PhotoPageComponent } from './components/photo-page/photo-page.component';
-import { AppComponent } from './components/app/app.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent, pathMatch: 'full' },
+  { path: '', component: HomePageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'add-album', component: AddAlbumComponent },

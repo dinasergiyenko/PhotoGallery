@@ -1,0 +1,10 @@
+<div class="page-container">
+    <div class="home-page">
+        <button mat-button (click)="uploadNewPage()">Upload</button>
+        <div *ngIf="photos != null" class="grid">
+            <div *ngFor="let photo of photos" class="grid-item">
+                <photo-card [photo]="photo" [isCurrentUser]="false"></photo-card>
+            </div>
+        </div>
+    </div>
+</div>

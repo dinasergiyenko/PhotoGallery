@@ -41,6 +41,11 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             return _unitOfWork.PhotoRepository.Find(x => x.Album.UserId == userId);
         }
 
+        public IEnumerable<Photo> GetPhotos(int pageNumber, int pageSize)
+        {
+            return _unitOfWork.PhotoRepository.Find(x => true, pageNumber, pageSize);
+        }
+
         public Photo GetById(int photoId)
         {
             var photo = _unitOfWork.PhotoRepository.Get(photoId);

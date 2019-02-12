@@ -31,6 +31,7 @@ import { AlbumPageComponent } from './components/album-page/album-page.component
 import { PhotoCardComponent } from './components/photo-card/photo-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { PhotoPageComponent } from './components/photo-page/photo-page.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PhotoPageComponent } from './components/photo-page/photo-page.component
     AlbumPageComponent,
     PhotoCardComponent,
     UserCardComponent,
-    PhotoPageComponent
+    PhotoPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
