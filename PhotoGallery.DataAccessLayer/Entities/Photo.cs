@@ -23,8 +23,8 @@ namespace PhotoGallery.DataAccessLayer.Entities
 
         public int AlbumId { get; set; }
 
-        public Album Album { get; set; }
+        public virtual Album Album { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }

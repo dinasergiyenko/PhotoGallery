@@ -18,8 +18,8 @@ namespace PhotoGallery.DataAccessLayer.Entities
 
         public int PhotoId { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
-        public Photo Photo { get; set; }
+        public virtual Photo Photo { get; set; }
     }
 }

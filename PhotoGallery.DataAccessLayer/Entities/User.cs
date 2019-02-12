@@ -34,8 +34,8 @@ namespace PhotoGallery.DataAccessLayer.Entities
         [MaxLength(DatabaseConstants.EntityPropertyDefaultLength)]
         public string FieldOfActivity { get; set; }
 
-        public List<Album> Albums { get; set; }
+        public virtual List<Album> Albums { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }

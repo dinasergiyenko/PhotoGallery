@@ -40,8 +40,10 @@ namespace PhotoGallery
             services.Configure<AppSettings>(appSettingsSection);
             var appSettings = appSettingsSection.Get<AppSettings>();
 
-            services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(appSettings.DbConnectionString));
+            services.AddDbContext<DatabaseContext>(
+                options => options
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(appSettings.DbConnectionString));
 
             var key = Encoding.ASCII.GetBytes(appSettings.JwtBearerKey);
 
