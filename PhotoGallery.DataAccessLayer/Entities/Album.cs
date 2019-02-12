@@ -13,7 +13,7 @@ namespace PhotoGallery.DataAccessLayer.Entities
         public string Title { get; set; }
 
         [MaxLength(DatabaseConstants.EntityDescriptionLength)]
-        public string Descirption { get; set; }
+        public string Description { get; set; }
 
         public int UserId { get; set; }
 
