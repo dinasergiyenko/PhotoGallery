@@ -21,7 +21,7 @@ namespace PhotoGallery.DataAccessLayer
             {
                 if (_userRepository == null)
                 {
-                    _userRepository = new GenericRepository<User, int>(_databaseContext);
+                    _userRepository = new UserRepository(_databaseContext);
                 }
 
                 return _userRepository;
@@ -36,7 +36,7 @@ namespace PhotoGallery.DataAccessLayer
             {
                 if (_albumRepository == null)
                 {
-                    _albumRepository = new GenericRepository<Album, int>(_databaseContext);
+                    _albumRepository = new AlbumRepository(_databaseContext);
                 }
 
                 return _albumRepository;
@@ -51,7 +51,7 @@ namespace PhotoGallery.DataAccessLayer
             {
                 if (_photoRepository == null)
                 {
-                    _photoRepository = new GenericRepository<Photo, int>(_databaseContext);
+                    _photoRepository = new PhotoRepository(_databaseContext);
                 }
 
                 return _photoRepository;

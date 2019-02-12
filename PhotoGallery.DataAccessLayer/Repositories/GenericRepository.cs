@@ -9,42 +9,45 @@ namespace PhotoGallery.DataAccessLayer.Repositories
 {
     public class GenericRepository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity: class
     {
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly DbSet<TEntity> DbSet;
 
         public GenericRepository(DatabaseContext db)
         {
-            _dbSet = db.Set<TEntity>();
+            DbSet = db.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
-            _dbSet.Add(entity);
+            DbSet.Add(entity);
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Find(
+            Expression<Func<TEntity, bool>> predicate,
+            int pageNumber = 0,
+            int pageSize = 0)
         {
-            return _dbSet.Where(predicate).AsEnumerable();
+            return DbSet.Where(predicate).AsEnumerable();
         }
 
-        public TEntity Get(TKey id)
+        public virtual TEntity Get(TKey id)
         {
-            return _dbSet.Find(id);
+            return DbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            return _dbSet.AsEnumerable();
+            return DbSet.AsEnumerable();
         }
 
-        public void RemoveById(TKey id)
+        public virtual void RemoveById(TKey id)
         {
-            var entity = _dbSet.Find(id);
-            _dbSet.Remove(entity);
+            var entity = DbSet.Find(id);
+            DbSet.Remove(entity);
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
-            _dbSet.Remove(entity);
+            DbSet.Remove(entity);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace PhotoGallery.DataAccessLayer.Interfaces
 
         void Add(TEntity entity);
 
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate, int pageNumber = 0, int pageSize = 0);
 
         void RemoveById(TKey id);
 
