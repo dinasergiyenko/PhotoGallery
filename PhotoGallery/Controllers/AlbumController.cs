@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using PhotoGallery.BusinessLogicLayer.Interfaces;
 using PhotoGallery.DataAccessLayer.Entities;
@@ -11,20 +10,20 @@ namespace PhotoGallery.Controllers
 {
     [Authorize]
     [Route("api/[controller]/[action]")]
-    public class AlbumController : Controller
+    public class AlbumController : BaseController
     {
         private readonly IAlbumService _albumService;
-        private readonly IUserService _userService;
+        private readonly IPhotoService _photoService;
         private readonly IMapper _mapper;
 
         public AlbumController(
             IAlbumService albumService,
-            IUserService userService,
+            IPhotoService photoService,
             IMapper mapper
             )
         {
             _albumService = albumService;
-            _userService = userService;
+            _photoService = photoService;
             _mapper = mapper;
         }
 
@@ -39,7 +38,7 @@ namespace PhotoGallery.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetAlbumPage(int id)
+        public IActionResult GetPage(int id, int photosPageNumber, int photosPageSize)
         {
             var album = _albumService.GetById(id);
 
@@ -47,15 +46,15 @@ namespace PhotoGallery.Controllers
             {
                 Album = _mapper.Map<AlbumViewModel>(album),
                 User = _mapper.Map<UserViewModel>(album.User),
-                Photos = _mapper.Map<IEnumerable<PhotoViewModel>>(album.Photos)
+                Photos = _mapper.Map<IEnumerable<PhotoViewModel>>(_photoService.GetByAlbumId(album.Id, photosPageNumber, photosPageSize))
             });
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetAll(int userId)
+        public IActionResult GetByUser(int userId, int pageNumber, int pageSize)
         {
-            var albums = _albumService.GetByUser(userId);
+            var albums = _albumService.GetByUser(userId, pageNumber, pageSize);
 
             return Ok(_mapper.Map<IEnumerable<AlbumViewModel>>(albums));
         }
@@ -68,12 +67,16 @@ namespace PhotoGallery.Controllers
                 return BadRequest("Album properties are not valid.");
             }
 
-            var userId = GetCurrentUserId();
-            var album = GetMappedAlbum(viewModel, userId);
+            if (!IsCurrentUser(viewModel.UserId))
+            {
+                return BadRequest("User credentials are not valid.");
+            }
+
+            var album = GetMappedAlbum(viewModel);
 
             _albumService.Add(album);
 
-            return Ok(userId);
+            return Ok(album.UserId);
         }
 
         [HttpPost]
@@ -84,25 +87,23 @@ namespace PhotoGallery.Controllers
                 return BadRequest("Album properties are not valid.");
             }
 
-            var userId = GetCurrentUserId();
-            var album = GetMappedAlbum(viewModel, userId);
+            if (!IsCurrentUser(viewModel.UserId))
+            {
+                return BadRequest("User credentials are not valid.");
+            }
+
+            var album = GetMappedAlbum(viewModel);
 
             _albumService.Update(album);
 
-            return Ok(userId);
+            return Ok(album.Id);
         }
 
-        private Album GetMappedAlbum(AlbumViewModel viewModel, int userId)
+        private Album GetMappedAlbum(AlbumViewModel viewModel)
         {
             var album = _mapper.Map<Album>(viewModel);
-            album.UserId = userId;
 
             return album;
-        }
-
-        private int GetCurrentUserId()
-        {
-            return int.Parse(User.Identity.Name);
         }
     }
 }

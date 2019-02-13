@@ -30,7 +30,7 @@ export class AlbumPageComponent implements OnInit {
       params => {
         let albumId = params.get('id');
 
-        this.albumService.getAlbumPage(albumId)
+        this.albumService.getPage(albumId, 0, 0)
           .subscribe(albumPage => {
             this.album = albumPage.album;
             this.user = albumPage.user;

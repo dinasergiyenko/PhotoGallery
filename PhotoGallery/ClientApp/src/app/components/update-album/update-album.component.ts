@@ -34,9 +34,8 @@ export class UpdateAlbumComponent implements OnInit {
   onSubmit(album: Album) {
     this.albumService.update(album)
       .subscribe(
-        userId => {
-          console.log(userId);
-          this.router.navigate(['/user', userId]);
+        albumId => {
+          this.router.navigate(['/album', albumId]);
         },
         error => {
           this.loading = false;
