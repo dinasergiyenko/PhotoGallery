@@ -31,14 +31,15 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             _unitOfWork.Commit();
         }
 
-        public IEnumerable<Photo> GetByAlbumId(int albumId)
+        public IEnumerable<Photo> GetByAlbumId(int albumId, int pageNumber, int pageSize)
         {
-            return _unitOfWork.PhotoRepository.Find(x => x.AlbumId == albumId);
-        }
+            if (!_albumService.IsAlbumExist(albumId))
+            {
+                throw new CustomValidationException("There is no such album.");
+            }
 
-        public IEnumerable<Photo> GetByUserId(int userId)
-        {
-            return _unitOfWork.PhotoRepository.Find(x => x.Album.UserId == userId);
+            return _unitOfWork.PhotoRepository
+                .Find(x => x.AlbumId == albumId, pageNumber, pageSize);
         }
 
         public IEnumerable<Photo> GetPhotos(int pageNumber, int pageSize)
@@ -65,12 +66,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Remove(int photoId)
         {
-            var photo = _unitOfWork.PhotoRepository.Get(photoId);
-
-            if (photo == null)
-            {
-                throw new CustomValidationException("This photo has been already removed.");
-            }
+            var photo = GetById(photoId);
 
             _unitOfWork.PhotoRepository.Remove(photo);
             _unitOfWork.Commit();
@@ -78,11 +74,11 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Update(Photo newPhoto)
         {
-            var oldPhoto = _unitOfWork.PhotoRepository.Get(newPhoto.Id);
+            var oldPhoto = GetById(newPhoto.Id);
 
-            if (oldPhoto == null)
+            if (!_albumService.IsAlbumExist(newPhoto.AlbumId))
             {
-                throw new CustomValidationException("There is no photo to update.");
+                throw new CustomValidationException("There is no such album to add photo.");
             }
 
             oldPhoto.Title = newPhoto.Title;

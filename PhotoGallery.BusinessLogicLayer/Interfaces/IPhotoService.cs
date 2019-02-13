@@ -1,7 +1,5 @@
 ﻿using PhotoGallery.DataAccessLayer.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PhotoGallery.BusinessLogicLayer.Interfaces
 {
@@ -9,8 +7,7 @@ namespace PhotoGallery.BusinessLogicLayer.Interfaces
     {
         bool IsPhotoExist(int photoId);
         Photo GetById(int photoId);
-        IEnumerable<Photo> GetByAlbumId(int albumId);
-        IEnumerable<Photo> GetByUserId(int userId);
+        IEnumerable<Photo> GetByAlbumId(int albumId, int pageNumber, int pageSize);
         IEnumerable<Photo> GetPhotos(int pageNumber, int pageSize);
         void Add(Photo photo);
         void Update(Photo photo);

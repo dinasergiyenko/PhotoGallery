@@ -31,14 +31,15 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             _unitOfWork.Commit();
         }
 
-        public IEnumerable<Album> GetByUser(int userId)
+        public IEnumerable<Album> GetByUser(int userId, int pageNumber, int pageSize)
         {
             if (!_userService.IsUserExist(userId))
             {
                 throw new CustomValidationException("There is no such user.");
             }
 
-            return _unitOfWork.AlbumRepository.Find(x => x.UserId == userId);
+            return _unitOfWork.AlbumRepository
+                .Find(x => x.UserId == userId, pageNumber, pageSize);
         }
 
         public Album GetById(int albumbId)
@@ -60,12 +61,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Remove(int albumId)
         {
-            var album = _unitOfWork.AlbumRepository.Get(albumId);
-
-            if (album == null)
-            {
-                throw new CustomValidationException("This album has been already removed.");
-            }
+            var album = GetById(albumId);
 
             _unitOfWork.AlbumRepository.Remove(album);
             _unitOfWork.Commit();
@@ -73,12 +69,7 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public void Update(Album newAlbum)
         {
-            var oldAlbum = _unitOfWork.AlbumRepository.Get(newAlbum.Id);
-
-            if (oldAlbum == null)
-            {
-                throw new CustomValidationException("There is no album to update.");
-            }
+            var oldAlbum = GetById(newAlbum.Id);
 
             if (oldAlbum.UserId != newAlbum.UserId)
             {

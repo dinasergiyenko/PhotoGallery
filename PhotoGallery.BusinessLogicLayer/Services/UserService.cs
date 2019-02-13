@@ -61,11 +61,6 @@ namespace PhotoGallery.BusinessLogicLayer.Services
 
         public string Login(string login, string password)
         {
-            if (!IsUserLoginExist(login))
-            {
-                throw new CustomValidationException("There is no such user.");
-            }
-
             if (!AreCredentialsValid(login, password))
             {
                 throw new CustomValidationException("Credentials are not valid.");
