@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         let userId = params.get('id');
-        this.userService.getUserPage(userId)
+        this.userService.getPage(userId, 0, 0)
           .subscribe(userPage => {
             this.user = userPage.user;
             this.albums = userPage.albums

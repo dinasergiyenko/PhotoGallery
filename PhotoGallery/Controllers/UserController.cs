@@ -3,26 +3,26 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhotoGallery.BusinessLogicLayer.Interfaces;
 using PhotoGallery.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.Controllers
 {
     [Authorize]
     [Route("api/[controller]/[action]")]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService _userService;
+        private readonly IAlbumService _albumService;
         private readonly IMapper _mapper;
 
         public UserController(
             IUserService userService,
+            IAlbumService albumService,
             IMapper mapper
             )
         {
             _userService = userService;
+            _albumService = albumService;
             _mapper = mapper;
         }
 
@@ -37,14 +37,14 @@ namespace PhotoGallery.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetUserPage(int userId)
+        public IActionResult GetPage(int userId, int albumsPageNumber, int albumsPageSize)
         {
             var user = _userService.GetById(userId);
 
             return Ok(new UserPageViewModel
             {
                 User = _mapper.Map<UserViewModel>(user),
-                Albums = _mapper.Map<IEnumerable<AlbumViewModel>>(user.Albums)
+                Albums = _mapper.Map<IEnumerable<AlbumViewModel>>(_albumService.GetByUser(userId, albumsPageNumber, albumsPageSize))
             });
 
         }

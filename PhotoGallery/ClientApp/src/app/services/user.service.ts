@@ -15,9 +15,14 @@ export class UserService {
         return this.http.get<User>('/api/User/Get', params);
     }
 
-    getUserPage(id: string) {
-        let params = { params: new HttpParams().set('userId', id) };
+    getPage(id: string, albumsPageNumber: number = 0, albumsPageSize: number = 0) {
+        let params = {
+            params: new HttpParams()
+                .set('userId', id)
+                .set('albumsPageNumber', albumsPageNumber.toString())
+                .set('albumsPageSize', albumsPageSize.toString())
+        };
 
-        return this.http.get<UserPage>('/api/User/GetUserPage', params);
+        return this.http.get<UserPage>('/api/User/GetPage', params);
     }
 }
