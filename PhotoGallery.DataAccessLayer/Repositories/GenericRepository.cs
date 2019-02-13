@@ -26,7 +26,8 @@ namespace PhotoGallery.DataAccessLayer.Repositories
             int pageNumber = 0,
             int pageSize = 0)
         {
-            return DbSet.Where(predicate).AsEnumerable();
+            return GetPage(DbSet.Where(predicate), pageNumber, pageSize)
+                .AsEnumerable();
         }
 
         public virtual TEntity Get(TKey id)
@@ -48,6 +49,15 @@ namespace PhotoGallery.DataAccessLayer.Repositories
         public virtual void Remove(TEntity entity)
         {
             DbSet.Remove(entity);
+        }
+
+        public IQueryable<TEntity> GetPage(IQueryable<TEntity> query, int pageNumber, int pageSize)
+        {
+            return pageSize != 0
+                ? query
+                    .Skip(pageNumber * pageSize)
+                    .Take(pageSize)
+                : query;
         }
     }
 }

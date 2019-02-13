@@ -23,14 +23,7 @@ namespace PhotoGallery.DataAccessLayer.Repositories
                 .Include(x => x.Album.User)
                 .Where(predicate);
 
-            if (pageSize != 0)
-            {
-                query = query
-                    .Skip(pageNumber * pageSize)
-                    .Take(pageSize);
-            }
-
-            return query
+            return GetPage(query, pageNumber, pageSize)
                 .AsEnumerable();
         }
 

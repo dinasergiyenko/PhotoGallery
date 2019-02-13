@@ -18,10 +18,11 @@ namespace PhotoGallery.DataAccessLayer.Repositories
             int pageNumber = 0,
             int pageSize = 0)
         {
-            return DbSet
+            var query = DbSet
                 .Include(x => x.User)
-                .Include(x => x.Photos)
-                .Where(predicate)
+                .Where(predicate);
+
+            return GetPage(query, pageNumber, pageSize)
                 .AsEnumerable();
         }
 

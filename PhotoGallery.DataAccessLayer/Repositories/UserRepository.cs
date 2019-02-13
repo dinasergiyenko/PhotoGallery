@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
 using PhotoGallery.DataAccessLayer.Entities;
 
 namespace PhotoGallery.DataAccessLayer.Repositories
@@ -18,9 +17,10 @@ namespace PhotoGallery.DataAccessLayer.Repositories
             int pageNumber = 0,
             int pageSize = 0)
         {
-            return DbSet
-                .Include(x => x.Albums)
-                .Where(predicate)
+            var query = DbSet
+                .Where(predicate);
+
+            return GetPage(query, pageNumber, pageSize)
                 .AsEnumerable();
         }
 
