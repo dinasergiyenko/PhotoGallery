@@ -14,7 +14,8 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
-import { AuthGuard } from './guards/auth.guard';
+import { NoAuthorizedGuard } from './guards/no-authorized.guard';
+import { AuthorizedGuard } from './guards/authorized.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AddAlbumComponent } from './components/add-album/add-album.component';
 import { AlbumService } from './services/album.service';
@@ -69,7 +70,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    AuthGuard,
+    NoAuthorizedGuard,
+    AuthorizedGuard,
     AlbumService,
     UserService,
     PhotoService
