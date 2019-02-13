@@ -8,32 +8,28 @@ using PhotoGallery.Models;
 using PhotoGallery.Services;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using Microsoft.AspNetCore.Http;
 
 namespace PhotoGallery.Controllers
 {
     [Authorize]
     [Route("api/[controller]/[action]")]
-    public class PhotoController : Controller
+    public class PhotoController : BaseController
     {
         private readonly IPhotoService _photoService;
-        private readonly IUserService _userService;
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IFileUploadService _fileUploadService;
 
         public PhotoController(
             IPhotoService photoService,
-            IUserService userService,
             IMapper mapper,
             IHostingEnvironment hostingEnvironment,
             IFileUploadService fileUploadService
             )
         {
             _photoService = photoService;
-            _userService = userService;
             _mapper = mapper;
             _hostingEnvironment = hostingEnvironment;
             _fileUploadService = fileUploadService;
@@ -47,22 +43,16 @@ namespace PhotoGallery.Controllers
                 return BadRequest("Photo properties are not valid.");
             }
 
-            var userId = GetCurrentUserId();
-
-            if (userId != viewModel.UserId)
+            if (!IsCurrentUser(viewModel.UserId))
             {
                 return BadRequest("User credentials are not valid.");
             }
 
-            var fileName = _fileUploadService.Upload(viewModel.File, _hostingEnvironment.WebRootPath);
-
-            var photo = _mapper.Map<Photo>(viewModel);
-            photo.Path = fileName;
-            photo.CreationDate = DateTime.Now;
+            var photo = GetMappedPhoto(viewModel);
 
             _photoService.Add(photo);
 
-            return Ok(userId);
+            return Ok(viewModel.AlbumId);
         }
 
         [AllowAnonymous]
@@ -76,7 +66,7 @@ namespace PhotoGallery.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetPhotoPage(int id)
+        public IActionResult GetPage(int id)
         {
             var photo = _photoService.GetById(id);
 
@@ -90,9 +80,9 @@ namespace PhotoGallery.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetByAlbum(int albumId)
+        public IActionResult GetByAlbum(int albumId, int pageNumber, int pageSize)
         {
-            var photos = _photoService.GetByAlbumId(albumId);
+            var photos = _photoService.GetByAlbumId(albumId, pageNumber, pageSize);
 
             return Ok(_mapper.Map<IEnumerable<PhotoViewModel>>(photos));
         }
@@ -101,7 +91,8 @@ namespace PhotoGallery.Controllers
         [HttpGet]
         public IActionResult GetPhotos(int pageNumber, int pageSize)
         {
-            var photos = _photoService.GetPhotos(pageNumber, pageSize)
+            var photos = _photoService
+                .GetPhotos(pageNumber, pageSize)
                 .OrderByDescending(x => x.CreationDate);
 
             return Ok(_mapper.Map<IEnumerable<PhotoViewModel>>(photos));
@@ -115,22 +106,31 @@ namespace PhotoGallery.Controllers
                 return BadRequest("Photo properties are not valid.");
             }
 
-            var userId = GetCurrentUserId();
-
-            if (userId != viewModel.UserId)
+            if (!IsCurrentUser(viewModel.UserId))
             {
                 return BadRequest("User credentials are not valid.");
             }
 
             var photo = _mapper.Map<Photo>(viewModel);
+
             _photoService.Update(photo);
 
-            return Ok();
+            return Ok(viewModel.UserId);
         }
 
-        private int GetCurrentUserId()
+        private Photo GetMappedPhoto(AddPhotoViewModel viewModel)
         {
-            return int.Parse(User.Identity.Name);
+            var photo = _mapper.Map<Photo>(viewModel);
+
+            photo.Path = UploadFile(viewModel.File);
+            photo.CreationDate = DateTime.Now;
+
+            return photo;
+        }
+
+        private string UploadFile(IFormFile file)
+        {
+            return _fileUploadService.Upload(file, _hostingEnvironment.WebRootPath);
         }
     }
 }

@@ -29,7 +29,7 @@ export class PhotoPageComponent implements OnInit {
       params => {
         let photoId = params.get('id');
 
-        this.photoService.getPhotoPage(photoId)
+        this.photoService.getPage(photoId)
           .subscribe(photoPage => {
             this.photo = photoPage.photo;
             this.album = photoPage.album;

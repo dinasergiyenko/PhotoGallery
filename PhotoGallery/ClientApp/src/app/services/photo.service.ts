@@ -39,20 +39,16 @@ export class PhotoService {
         return this.http.get<Photo>('/api/Photo/Get', params)
     }
 
-    getPhotoPage(id: string) {
+    getPage(id: string) {
         let params = { params: new HttpParams().set('id', id) };
 
-        return this.http.get<PhotoPage>('/api/Photo/GetPhotoPage', params);
-    }
-
-    getByAlbum(albumId: string) {
-        let params = { params: new HttpParams().set('albumId', albumId) };
-
-        return this.http.get<Photo[]>('/api/Photo/GetByAlbum', params)
+        return this.http.get<PhotoPage>('/api/Photo/GetPage', params);
     }
 
     getPhotos(pageNumber: number, pageSize: number) {
-        let params = { params: new HttpParams().set('pageNumber', pageNumber.toString()).set('pageSize', pageSize.toString()) };
+        let params = { params: new HttpParams()
+            .set('pageNumber', pageNumber.toString())
+            .set('pageSize', pageSize.toString()) };
 
         return this.http.get<Photo[]>('/api/Photo/GetPhotos', params)
     }

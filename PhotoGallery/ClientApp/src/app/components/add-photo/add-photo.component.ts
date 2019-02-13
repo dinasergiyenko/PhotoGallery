@@ -23,8 +23,8 @@ export class AddPhotoComponent implements OnInit {
   onSubmit(photo: Photo){
     this.photoService.add(photo)
       .subscribe(
-        data => {
-          this.router.navigate(['/']);
+        albumId => {
+          this.router.navigate(['/album', albumId]);
         },
         error => {
           this.loading = false;
