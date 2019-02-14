@@ -9,7 +9,7 @@
     </mat-card-content>
     <mat-card-actions *ngIf="isCurrentUser" class="card-actions">
       <i [routerLink]="['/update-album', album.id]" mat-card-avatar class="material-icons">edit</i>
-      <i mat-card-avatar class="material-icons">delete</i>
+      <i mat-card-avatar class="material-icons" (click)="removeAlbum()">delete</i>
     </mat-card-actions>
   </mat-card>
 </div>

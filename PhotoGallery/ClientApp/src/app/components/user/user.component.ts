@@ -42,4 +42,8 @@ export class UserComponent implements OnInit {
   isCurrentUser(albumUserId: number){
     return this.currentUser && this.currentUser.id == albumUserId;
   }
+
+  remove(albumId: number){
+    this.albums = this.albums.filter(item => item.id != albumId);
+  }
 }

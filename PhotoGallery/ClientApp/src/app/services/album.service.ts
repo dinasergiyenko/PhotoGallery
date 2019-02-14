@@ -60,4 +60,8 @@ export class AlbumService {
 
         return this.http.get<boolean>('/api/Album/IsCurrentAlbumUser', params);
     }
+
+    remove(albumId: number){
+        return this.http.post<number>('/api/Album/Remove', albumId);
+    }
 }

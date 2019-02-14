@@ -12,6 +12,6 @@ namespace PhotoGallery.BusinessLogicLayer.Interfaces
         Album GetById(int albumId);
         void Add(Album album);
         void Update(Album album);
-        void Remove(int albumId);
+        void Remove(Album album);
     }
 }

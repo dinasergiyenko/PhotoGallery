@@ -113,6 +113,21 @@ namespace PhotoGallery.Controllers
             return Ok(true);
         }
 
+        [HttpPost]
+        public IActionResult Remove([FromBody]int albumId)
+        {
+            var album = _albumService.GetById(albumId);
+            
+            if (!IsCurrentUser(album.UserId))
+            {
+                return BadRequest("User credentials are not valid.");
+            }
+
+            _albumService.Remove(album);
+
+            return Ok(album.Id);
+        }
+
         private Album GetMappedAlbum(AlbumViewModel viewModel)
         {
             var album = _mapper.Map<Album>(viewModel);

@@ -4,7 +4,7 @@
       <user-card *ngIf="user" [user]="user" [isCurrentUser]="isCurrentUser()"></user-card>
     </div>
     <div class="info-bar-item">
-      <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()"></album-card>
+      <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="remove($event)"></album-card>
     </div>
   </div>
   <div class="grid">

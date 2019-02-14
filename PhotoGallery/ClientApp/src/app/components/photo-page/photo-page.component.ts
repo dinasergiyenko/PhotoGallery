@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Photo } from 'src/app/models/photo';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Album } from 'src/app/models/album';
 import { PhotoService } from 'src/app/services/photo.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'photo-page',
@@ -16,11 +16,12 @@ export class PhotoPageComponent implements OnInit {
   private currentUser: User;
   private photo: Photo;
   private album: Album;
-
+  
   constructor(
     private authenticationService: AuthenticationService,
     private photoService: PhotoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -48,5 +49,8 @@ export class PhotoPageComponent implements OnInit {
   isCurrentUser() {
     return this.currentUser && this.album && this.currentUser.id == this.album.userId;
   }
-
+  
+  remove(albumId: number) {
+    this.router.navigate(['/user', this.album.userId]);
+  }
 }

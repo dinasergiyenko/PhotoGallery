@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Photo } from 'src/app/models/photo';
 import { AlbumService } from 'src/app/services/album.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Album } from 'src/app/models/album';
 
@@ -20,7 +20,8 @@ export class AlbumPageComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private albumService: AlbumService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,5 +48,9 @@ export class AlbumPageComponent implements OnInit {
 
   isCurrentUser() {
     return this.currentUser && this.album && this.currentUser.id == this.album.userId;
+  }
+
+  remove(albumId: number) {
+    this.router.navigate(['/user', this.album.userId]);
   }
 }

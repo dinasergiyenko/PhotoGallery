@@ -6,7 +6,7 @@
   </div>
   <div *ngIf="albums != null" class="grid">
     <div *ngFor="let album of albums" class="grid-item">
-        <album-card [album]="album" [isCurrentUser]="isCurrentUser(album.userId)"></album-card>
+        <album-card [album]="album" [isCurrentUser]="isCurrentUser(album.userId)" (remove)="remove($event)"></album-card>
     </div>
   </div>
 </div>
