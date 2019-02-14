@@ -54,4 +54,10 @@ export class AlbumService {
     update(album: Album) {
         return this.http.post('/api/Album/Update', album);
     }
+
+    isCurrentUser(albumId: string){
+        let params = { params: new HttpParams().set('albumId', albumId) }
+
+        return this.http.get<boolean>('/api/Album/IsCurrentAlbumUser', params);
+    }
 }

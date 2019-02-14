@@ -33,6 +33,8 @@ import { PhotoCardComponent } from './components/photo-card/photo-card.component
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { PhotoPageComponent } from './components/photo-page/photo-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { UpdateAlbumGuard } from './guards/update-album.guard';
+import { UpdatePhotoGuard } from './guards/update-photo.guard';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     NoAuthorizedGuard,
     AuthorizedGuard,
+    UpdateAlbumGuard,
+    UpdatePhotoGuard,
     AlbumService,
     UserService,
     PhotoService

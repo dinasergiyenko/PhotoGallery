@@ -62,4 +62,10 @@ export class PhotoService {
             userId: this.user.id
         })
     }
+
+    isCurrentUser(photoId: string){
+        let params = { params: new HttpParams().set('photoId', photoId) }
+
+        return this.http.get<boolean>('/api/Photo/IsCurrentPhotoUser', params);
+    }
 }

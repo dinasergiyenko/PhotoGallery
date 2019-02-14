@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using PhotoGallery.BusinessLogicLayer.Infrastructure.Exceptions;
 
 namespace PhotoGallery.Controllers
 {
@@ -116,6 +117,19 @@ namespace PhotoGallery.Controllers
             _photoService.Update(photo);
 
             return Ok(viewModel.UserId);
+        }
+
+        [HttpGet]
+        public IActionResult IsCurrentPhotoUser(int photoId)
+        {
+            var photo = _photoService.GetById(photoId);
+
+            if (!IsCurrentUser(photo.Album.UserId))
+            {
+                throw new CustomValidationException("No rights to modify this photo.");
+            }
+
+            return Ok(true);
         }
 
         private Photo GetMappedPhoto(AddPhotoViewModel viewModel)

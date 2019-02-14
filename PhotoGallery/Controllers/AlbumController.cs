@@ -5,6 +5,7 @@ using PhotoGallery.BusinessLogicLayer.Interfaces;
 using PhotoGallery.DataAccessLayer.Entities;
 using PhotoGallery.Models;
 using System.Collections.Generic;
+using PhotoGallery.BusinessLogicLayer.Infrastructure.Exceptions;
 
 namespace PhotoGallery.Controllers
 {
@@ -97,6 +98,19 @@ namespace PhotoGallery.Controllers
             _albumService.Update(album);
 
             return Ok(album.Id);
+        }
+
+        [HttpGet]
+        public IActionResult IsCurrentAlbumUser(int albumId)
+        {
+            var album = _albumService.GetById(albumId);
+
+            if (!IsCurrentUser(album.UserId))
+            {
+                throw new CustomValidationException("No rights to modify this album.");
+            }
+
+            return Ok(true);
         }
 
         private Album GetMappedAlbum(AlbumViewModel viewModel)
