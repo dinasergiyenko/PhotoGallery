@@ -13,7 +13,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PhotoPageComponent implements OnInit {
   private user: User;
-  //private isCurrentUser: boolean;
   private currentUser: User;
   private photo: Photo;
   private album: Album;
@@ -40,7 +39,6 @@ export class PhotoPageComponent implements OnInit {
           .subscribe(
             user => {
               this.currentUser = user;
-              //this.isCurrentUser = this.currentUser.id == this.album.userId;
             }
           )
       }

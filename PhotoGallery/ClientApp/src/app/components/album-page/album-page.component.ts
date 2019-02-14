@@ -12,9 +12,7 @@ import { Album } from 'src/app/models/album';
   styleUrls: ['./album-page.component.scss']
 })
 export class AlbumPageComponent implements OnInit {
-
   private user: User;
-  //private isCurrentUser: boolean;
   private currentUser: User;
   private photos: Photo[];
   private album: Album;
@@ -41,7 +39,6 @@ export class AlbumPageComponent implements OnInit {
           .subscribe(
             user => {
               this.currentUser = user;
-              //this.isCurrentUser = this.currentUser.id == this.album.userId;
             }
           )
       }

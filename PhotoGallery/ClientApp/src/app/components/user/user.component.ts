@@ -39,4 +39,7 @@ export class UserComponent implements OnInit {
     )
   }
 
+  isCurrentUser(albumUserId: number){
+    return this.currentUser && this.currentUser.id == albumUserId;
+  }
 }
