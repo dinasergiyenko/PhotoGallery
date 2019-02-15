@@ -22,9 +22,11 @@ export class AlbumCardComponent implements OnInit {
   }
 
   removeAlbum() {
-    this.albumService.remove(this.album.id)
-      .subscribe(albumId =>
-        this.remove.emit(albumId)
-      );
+    if (confirm("Do you want to delete this album?")) {
+      this.albumService.remove(this.album.id)
+        .subscribe(albumId =>
+          this.remove.emit(albumId)
+        );
+    }
   }
 }

@@ -22,9 +22,11 @@ export class PhotoCardComponent implements OnInit {
   }
 
   removePhoto() {
-    this.photoService.remove(this.photo.id)
+    if (confirm("Do you want to delete this photo?")) {
+      this.photoService.remove(this.photo.id)
       .subscribe(photoId =>
         this.remove.emit(photoId)
       )
+    }
   }
 }
