@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Album } from 'src/app/models/album';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'album-form',
@@ -12,10 +13,16 @@ export class AlbumFormComponent {
 
   @Output() onParentSubmit = new EventEmitter<Album>();
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) { }
 
   onSubmit() {
     this.loading = true;
     this.onParentSubmit.emit(this.album);
+  }
+
+  cancel() {
+    this.location.back();
   }
 }

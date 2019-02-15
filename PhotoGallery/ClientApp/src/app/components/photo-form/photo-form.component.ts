@@ -4,6 +4,7 @@ import { AlbumService } from 'src/app/services/album.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Album } from 'src/app/models/album';
 import { User } from 'src/app/models/user';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'photo-form',
@@ -22,7 +23,8 @@ export class PhotoFormComponent implements OnInit {
 
   constructor(
     private albumService: AlbumService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -45,5 +47,9 @@ export class PhotoFormComponent implements OnInit {
   onSubmit(){
     this.loading = true;
     this.onParentSubmit.emit(this.photo);
+  }
+
+  cancel() {
+    this.location.back();
   }
 }

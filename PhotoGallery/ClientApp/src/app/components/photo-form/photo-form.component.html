@@ -28,6 +28,8 @@
       (ngModelChange)="photo.description=$event">
     </textarea>
   </mat-form-field>
-
-  <button mat-button [disabled]="loading || !photoForm.form.valid">Save Photo</button>
+  <div class="form-buttons">
+      <button mat-flat-button [disabled]="loading || !photoForm.form.valid" color="primary" class="form-button">Save Photo</button>
+      <a mat-flat-button [disabled]="loading" (click)="cancel()" class="form-button">Cancel</a>
+  </div>
 </form>
