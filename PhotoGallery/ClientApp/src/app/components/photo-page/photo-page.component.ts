@@ -50,7 +50,11 @@ export class PhotoPageComponent implements OnInit {
     return this.currentUser && this.album && this.currentUser.id == this.album.userId;
   }
   
-  remove(albumId: number) {
+  removeAlbum(albumId: number) {
     this.router.navigate(['/user', this.album.userId]);
+  }
+
+  removePhoto(photoId: number){
+    this.router.navigate(['/album', this.photo.albumId]);
   }
 }

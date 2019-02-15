@@ -11,6 +11,6 @@ namespace PhotoGallery.BusinessLogicLayer.Interfaces
         IEnumerable<Photo> GetPhotos(int pageNumber, int pageSize);
         void Add(Photo photo);
         void Update(Photo photo);
-        void Remove(int photoId);
+        void Remove(Photo photo);
     }
 }

@@ -68,4 +68,8 @@ export class PhotoService {
 
         return this.http.get<boolean>('/api/Photo/IsCurrentPhotoUser', params);
     }
+
+    remove(photoId: number){
+        return this.http.post<number>('/api/Photo/Remove', photoId);
+    }
 }

@@ -4,12 +4,12 @@
       <user-card *ngIf="user" [user]="user" [isCurrentUser]="isCurrentUser()"></user-card>
     </div>
     <div class="info-bar-item">
-      <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="remove($event)"></album-card>
+      <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="removeAlbum($event)"></album-card>
     </div>
   </div>
   <div *ngIf="photos != null" class="grid">
     <div *ngFor="let photo of photos" class="grid-item">
-      <photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()"></photo-card>
+      <photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></photo-card>
     </div>
   </div>
 </div>

@@ -132,6 +132,21 @@ namespace PhotoGallery.Controllers
             return Ok(true);
         }
 
+        [HttpPost]
+        public IActionResult Remove([FromBody]int photoId)
+        {
+            var photo = _photoService.GetById(photoId);
+
+            if (!IsCurrentUser(photo.Album.UserId))
+            {
+                throw new CustomValidationException("No rights to remove this photo.");
+            }
+
+            _photoService.Remove(photo);
+
+            return Ok(photo.Id);
+        }
+
         private Photo GetMappedPhoto(AddPhotoViewModel viewModel)
         {
             var photo = _mapper.Map<Photo>(viewModel);

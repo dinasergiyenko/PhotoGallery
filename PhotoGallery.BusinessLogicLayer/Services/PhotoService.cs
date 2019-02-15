@@ -64,10 +64,8 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             return _unitOfWork.PhotoRepository.Get(photoId) != null;
         }
 
-        public void Remove(int photoId)
+        public void Remove(Photo photo)
         {
-            var photo = GetById(photoId);
-
             _unitOfWork.PhotoRepository.Remove(photo);
             _unitOfWork.Commit();
         }
