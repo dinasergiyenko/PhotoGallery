@@ -6,11 +6,11 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
-  selector: 'user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'user-page',
+  templateUrl: './user-page.component.html',
+  styleUrls: ['./user-page.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserPageComponent implements OnInit {
 
   private currentUser: User;
   private user: User;

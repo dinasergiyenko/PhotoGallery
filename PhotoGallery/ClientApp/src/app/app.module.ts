@@ -21,7 +21,7 @@ import { AddAlbumComponent } from './components/add-album/add-album.component';
 import { AlbumService } from './services/album.service';
 import { AlbumFormComponent } from './components/album-form/album-form.component';
 import { UpdateAlbumComponent } from './components/update-album/update-album.component';
-import { UserComponent } from './components/user/user.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserService } from './services/user.service';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
@@ -46,7 +46,7 @@ import { UpdatePhotoGuard } from './guards/update-photo.guard';
     AddAlbumComponent,
     AlbumFormComponent,
     UpdateAlbumComponent,
-    UserComponent,
+    UserPageComponent,
     AlbumCardComponent,
     AddPhotoComponent,
     PhotoFormComponent,
