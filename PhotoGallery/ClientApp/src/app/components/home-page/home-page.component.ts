@@ -3,6 +3,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 import { Photo } from 'src/app/models/photo';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user';
+import { Constants } from 'src/app/common/constants';
 
 @Component({
   selector: 'home-page',
@@ -12,7 +13,6 @@ import { User } from 'src/app/models/user';
 export class HomePageComponent implements OnInit {
   currentUser: User;
   photos: Photo[];
-  pageNumber = 0;
 
   constructor(
     private photoService: PhotoService,
@@ -24,18 +24,20 @@ export class HomePageComponent implements OnInit {
       .subscribe(user => 
         this.currentUser = user);
 
-    this.photoService.getPhotos(this.pageNumber, 8)
+    this.photoService.getPhotos(0, Constants.PHOTOS_PAGE_SIZE)
       .subscribe(photos => {
         this.photos = photos;
       });
   }
 
-  uploadNewPage(){
-    this.pageNumber += 1;
-    this.photoService.getPhotos(this.pageNumber, 8)
+  loadMore(pageNumber: number){
+    this.photoService.getPhotos(pageNumber, Constants.PHOTOS_PAGE_SIZE)
       .subscribe(photos => {
         this.photos = this.photos.concat(photos);
       })
   }
 
+  isLoadMoreDisplayed(){
+    return this.photos && this.photos.length != 0;
+  }
 }

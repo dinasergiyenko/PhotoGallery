@@ -1,12 +1,16 @@
 <div class="page-container">
   <div class="info-bar">
     <div class="info-bar-item">
-        <user-card *ngIf="user" [user]="user"></user-card>
+      <user-card *ngIf="user" [user]="user"></user-card>
     </div>
   </div>
-  <div *ngIf="albums != null" class="grid">
-    <div *ngFor="let album of albums" class="grid-item">
-        <album-card [album]="album" [isCurrentUser]="isCurrentUser(album.userId)" (remove)="remove($event)"></album-card>
+  <div class="page-content">
+    <div *ngIf="albums != null" class="grid">
+      <div *ngFor="let album of albums" class="grid-item">
+        <album-card [album]="album" [isCurrentUser]="isCurrentUser(album.userId)" (remove)="remove($event)">
+        </album-card>
+      </div>
     </div>
+    <load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></load-more>
   </div>
 </div>

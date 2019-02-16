@@ -5,6 +5,8 @@ import { AlbumService } from 'src/app/services/album.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Album } from 'src/app/models/album';
+import { PhotoService } from 'src/app/services/photo.service';
+import { Constants } from 'src/app/common/constants';
 
 @Component({
   selector: 'album-page',
@@ -21,7 +23,8 @@ export class AlbumPageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private albumService: AlbumService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private photoService: PhotoService
   ) { }
 
   ngOnInit() {
@@ -29,7 +32,7 @@ export class AlbumPageComponent implements OnInit {
       params => {
         let albumId = params.get('id');
 
-        this.albumService.getPage(albumId, 0, 0)
+        this.albumService.getPage(albumId, 0, Constants.PHOTOS_PAGE_SIZE)
           .subscribe(albumPage => {
             this.album = albumPage.album;
             this.user = albumPage.user;
@@ -56,5 +59,16 @@ export class AlbumPageComponent implements OnInit {
 
   removePhoto(photoId: number) {
     this.photos = this.photos.filter(item => item.id != photoId);
+  }
+
+  isLoadMoreDisplayed() {
+    return this.photos && this.photos.length != 0;
+  }
+
+  loadMore(pageNumber: number) {
+    this.photoService.getByAlbum(this.album.id, pageNumber, Constants.PHOTOS_PAGE_SIZE)
+      .subscribe(photos => 
+        this.photos = this.photos.concat(photos)
+      );
   }
 }

@@ -41,9 +41,9 @@ export class AlbumService {
         return this.http.get<AlbumPage>('/api/Album/GetPage', params);
     }
 
-    getByUser(userId: string, pageNumber: number = 0, pageSize: number = 0) {
+    getByUser(userId: number, pageNumber: number = 0, pageSize: number = 0) {
         let params = { params: new HttpParams()
-            .set('userId', userId)
+            .set('userId', userId.toString())
             .set('pageNumber', pageNumber.toString())
             .set('pageSize', pageSize.toString()) 
         };

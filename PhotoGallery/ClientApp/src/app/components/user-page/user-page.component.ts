@@ -4,6 +4,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Album } from 'src/app/models/album';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AlbumService } from 'src/app/services/album.service';
+import { Constants } from 'src/app/common/constants';
 
 @Component({
   selector: 'user-page',
@@ -19,14 +21,15 @@ export class UserPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private albumService: AlbumService
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(
       params => {
         let userId = params.get('id');
-        this.userService.getPage(userId, 0, 0)
+        this.userService.getPage(userId, 0, Constants.ALBUMS_PAGE_SIZE)
           .subscribe(userPage => {
             this.user = userPage.user;
             this.albums = userPage.albums
@@ -45,5 +48,16 @@ export class UserPageComponent implements OnInit {
 
   remove(albumId: number){
     this.albums = this.albums.filter(item => item.id != albumId);
+  }
+
+  isLoadMoreDisplayed() {
+    return this.albums && this.albums.length != 0;
+  }
+
+  loadMore(pageNumber: number) {
+    this.albumService.getByUser(this.user.id, pageNumber, Constants.ALBUMS_PAGE_SIZE)
+      .subscribe(albums =>
+        this.albums = this.albums.concat(albums)
+      );
   }
 }

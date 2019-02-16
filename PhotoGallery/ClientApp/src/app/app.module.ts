@@ -35,6 +35,7 @@ import { PhotoPageComponent } from './components/photo-page/photo-page.component
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { UpdateAlbumGuard } from './guards/update-album.guard';
 import { UpdatePhotoGuard } from './guards/update-photo.guard';
+import { LoadMoreComponent } from './components/load-more/load-more.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { UpdatePhotoGuard } from './guards/update-photo.guard';
     PhotoCardComponent,
     UserCardComponent,
     PhotoPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoadMoreComponent
   ],
   imports: [
     BrowserModule,

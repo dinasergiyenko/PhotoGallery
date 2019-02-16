@@ -53,6 +53,16 @@ export class PhotoService {
         return this.http.get<Photo[]>('/api/Photo/GetPhotos', params)
     }
 
+    getByAlbum(albumId: number, pageNumber: number, pageSize: number){
+        let params = { params: new HttpParams()
+            .set('albumId', albumId.toString())
+            .set('pageNumber', pageNumber.toString())
+            .set('pageSize', pageSize.toString()) 
+        };
+
+        return this.http.get<Photo[]>('/api/Photo/GetByAlbum', params);
+    }
+
     update(photo: Photo) {
         return this.http.post('/api/Photo/Update', {
             id: photo.id,

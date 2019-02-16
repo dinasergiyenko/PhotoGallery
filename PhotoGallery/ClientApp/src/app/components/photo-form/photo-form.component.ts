@@ -29,7 +29,7 @@ export class PhotoFormComponent implements OnInit {
 
   ngOnInit() {
     this.authenticationService.currentUser.subscribe(
-      user => this.albumService.getByUser(user.id.toString()).subscribe(
+      user => this.albumService.getByUser(user.id).subscribe(
         albums => this.albums = albums
       )
     );

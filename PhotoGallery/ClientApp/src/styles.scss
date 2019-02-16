@@ -36,6 +36,12 @@ p {
     padding-left: 36px;
 }
 
+.page-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .update-page-container{
     display: flex;
     justify-content: center;
