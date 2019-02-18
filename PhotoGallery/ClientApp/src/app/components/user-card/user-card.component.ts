@@ -7,7 +7,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./user-card.component.scss']
 })
 
-export class UserCardComponent implements OnInit {
+export class UserCardComponent {
   @Input() user: User;
   @Input() isCurrentUser: boolean;
 
@@ -16,25 +16,20 @@ export class UserCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges){
+  ngOnChanges(changes: SimpleChanges) {
     this.updateDisplayName();
     this.updateMailToLink();
   }
 
-  updateDisplayName(){
-    if (this.user){
+  updateDisplayName() {
+    if (this.user) {
       this.displayName = this.user.firstName + ' ' + this.user.lastName;
     }
-
   }
 
-  updateMailToLink(){
-    if (this.user){
+  updateMailToLink() {
+    if (this.user) {
       this.mailToLink = 'mailto:' + this.user.email;
     }
-
   }
 }

@@ -26,27 +26,27 @@ export class UserPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(
-      params => {
+    this.route.paramMap
+      .subscribe(params => {
         let userId = params.get('id');
+
         this.userService.getPage(userId, 0, Constants.ALBUMS_PAGE_SIZE)
           .subscribe(userPage => {
             this.user = userPage.user;
             this.albums = userPage.albums
-          })
+          });
 
         this.authenticationService.currentUser.subscribe(
           user => this.currentUser = user
-        )
-      }
-    )
+        );
+      });
   }
 
-  isCurrentUser(albumUserId: number){
+  isCurrentUser(albumUserId: number) {
     return this.currentUser && this.currentUser.id == albumUserId;
   }
 
-  remove(albumId: number){
+  remove(albumId: number) {
     this.albums = this.albums.filter(item => item.id != albumId);
   }
 

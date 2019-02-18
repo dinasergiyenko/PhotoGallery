@@ -20,17 +20,17 @@ export class UpdateAlbumComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(
-      params => {
+    this.route.paramMap
+      .subscribe(params => {
         let id = params.get('id');
-        this.albumService.get(id).subscribe(
-          album => {
+
+        this.albumService.get(id)
+          .subscribe(album => {
             this.album = album
-          })
-      } 
-    )
+          });
+      });
   }
-  
+
   onSubmit(album: Album) {
     this.albumService.update(album)
       .subscribe(
@@ -40,6 +40,6 @@ export class UpdateAlbumComponent implements OnInit {
         error => {
           this.loading = false;
         }
-      )
+      );
   }
 }

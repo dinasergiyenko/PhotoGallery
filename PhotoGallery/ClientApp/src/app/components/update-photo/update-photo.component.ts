@@ -19,19 +19,18 @@ export class UpdatePhotoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(
-      params => {
+    this.route.paramMap
+      .subscribe(params => {
         let id = params.get('id');
-        this.photoService.get(id).subscribe(
-          photo => {
+
+        this.photoService.get(id)
+          .subscribe(photo => {
             this.photo = photo
-          }
-        )
-      }
-    )
+          });
+      });
   }
 
-  onSubmit(photo: Photo){
+  onSubmit(photo: Photo) {
     this.photoService.update(photo)
       .subscribe(
         data => {
@@ -41,6 +40,6 @@ export class UpdatePhotoComponent implements OnInit {
         error => {
           this.loading = false;
         }
-      )
+      );
   }
 }

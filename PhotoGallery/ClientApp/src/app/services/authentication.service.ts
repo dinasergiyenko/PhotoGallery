@@ -28,7 +28,7 @@ export class AuthenticationService {
       }));
   }
 
-  register(user: User){
+  register(user: User) {
     return this.http.post('/api/Authentication/Register', user);
   }
 

@@ -1,10 +1,10 @@
 <div class="page-container">
-    <div class="home-page">
-        <div *ngIf="photos != null" class="grid">
-            <div *ngFor="let photo of photos" class="grid-item">
-                <photo-card [photo]="photo" [isCurrentUser]="false"></photo-card>
-            </div>
-        </div>
-        <load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></load-more>
+  <div class="home-page">
+    <div *ngIf="photos != null" class="grid">
+      <div *ngFor="let photo of photos" class="grid-item">
+        <photo-card [photo]="photo" [isCurrentUser]="false"></photo-card>
+      </div>
     </div>
+    <load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></load-more>
+  </div>
 </div>

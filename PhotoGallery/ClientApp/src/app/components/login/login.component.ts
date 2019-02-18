@@ -26,15 +26,16 @@ export class LoginComponent implements OnInit {
   }
 
   get formControls() {
-    return this.loginForm.controls; 
+    return this.loginForm.controls;
   }
 
-  onSubmit(){
+  onSubmit() {
     if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
+
     this.authenticationService.login(this.formControls.username.value, this.formControls.password.value)
       .subscribe(
         data => {

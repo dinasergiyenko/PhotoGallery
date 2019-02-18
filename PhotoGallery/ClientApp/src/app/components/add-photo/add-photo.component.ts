@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { Photo } from 'src/app/models/photo';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-photo.component.html',
   styleUrls: ['./add-photo.component.scss']
 })
-export class AddPhotoComponent implements OnInit {
+export class AddPhotoComponent {
   private photo = new Photo();
   private loading = false;
 
@@ -17,10 +17,7 @@ export class AddPhotoComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
-
-  onSubmit(photo: Photo){
+  onSubmit(photo: Photo) {
     this.photoService.add(photo)
       .subscribe(
         albumId => {

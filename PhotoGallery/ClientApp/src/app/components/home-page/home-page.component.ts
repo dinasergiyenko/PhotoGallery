@@ -21,8 +21,9 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.authenticationServie.currentUser
-      .subscribe(user => 
-        this.currentUser = user);
+      .subscribe(user =>
+        this.currentUser = user
+      );
 
     this.photoService.getPhotos(0, Constants.PHOTOS_PAGE_SIZE)
       .subscribe(photos => {
@@ -30,14 +31,14 @@ export class HomePageComponent implements OnInit {
       });
   }
 
-  loadMore(pageNumber: number){
+  loadMore(pageNumber: number) {
     this.photoService.getPhotos(pageNumber, Constants.PHOTOS_PAGE_SIZE)
       .subscribe(photos => {
         this.photos = this.photos.concat(photos);
-      })
+      });
   }
 
-  isLoadMoreDisplayed(){
+  isLoadMoreDisplayed() {
     return this.photos && this.photos.length != 0;
   }
 }

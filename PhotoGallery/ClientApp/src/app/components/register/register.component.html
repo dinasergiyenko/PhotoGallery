@@ -1,45 +1,45 @@
 <div *ngIf="isRegistered">
-    The user is registered. Now you can login <a routerLink="/login">here</a>.
+  The user is registered. Now you can login <a routerLink="/login">here</a>.
 </div>
 <div class="update-page-container">
-    <div class="update-card-wrapper">
-        <mat-card>
-            <mat-card-header>
-                <i mat-card-avatar class="material-icons">face</i>
-                <mat-card-title>Registration Page</mat-card-title>
-                <mat-card-subtitle>Please, fill the form to create a new account</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
-                    <mat-form-field>
-                        <input matInput placeholder="Username" type="text" formControlName="username" />
-                        <mat-error *ngIf="formControls.username.invalid">Username is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Password" type="password" formControlName="password" />
-                        <mat-error *ngIf="formControls.password.invalid">Password is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="First Name" type="text" formControlName="firstName" />
-                        <mat-error *ngIf="formControls.firstName.invalid">First Name is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Last Name" type="text" formControlName="lastName" />
-                        <mat-error *ngIf="formControls.lastName.invalid">Last Name is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Email" type="text" formControlName="email" />
-                        <mat-error *ngIf="formControls.email.invalid">Email has wrong format</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="City" type="text" formControlName="city" />
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Field of Activity" type="text" formControlName="fieldOfActivity" />
-                    </mat-form-field>
-                    <button mat-button [disabled]="loading">Register</button>
-                </form>
-            </mat-card-content>
-        </mat-card>
-    </div>
+  <div class="update-card-wrapper">
+    <mat-card>
+      <mat-card-header>
+        <i mat-card-avatar class="material-icons">face</i>
+        <mat-card-title>Registration Page</mat-card-title>
+        <mat-card-subtitle>Please, fill the form to create a new account</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+          <mat-form-field>
+            <input matInput placeholder="Username" type="text" formControlName="username" />
+            <mat-error *ngIf="formControls.username.invalid">Username is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Password" type="password" formControlName="password" />
+            <mat-error *ngIf="formControls.password.invalid">Password is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="First Name" type="text" formControlName="firstName" />
+            <mat-error *ngIf="formControls.firstName.invalid">First Name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last Name" type="text" formControlName="lastName" />
+            <mat-error *ngIf="formControls.lastName.invalid">Last Name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" type="text" formControlName="email" />
+            <mat-error *ngIf="formControls.email.invalid">Email has wrong format</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="City" type="text" formControlName="city" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Field of Activity" type="text" formControlName="fieldOfActivity" />
+          </mat-form-field>
+          <button mat-button [disabled]="loading">Register</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

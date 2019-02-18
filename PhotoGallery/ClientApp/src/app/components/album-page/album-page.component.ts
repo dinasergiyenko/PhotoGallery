@@ -40,11 +40,9 @@ export class AlbumPageComponent implements OnInit {
           });
 
         this.authenticationService.currentUser
-          .subscribe(
-            user => {
-              this.currentUser = user;
-            }
-          )
+          .subscribe(user => {
+            this.currentUser = user;
+          });
       }
     )
   }
@@ -67,7 +65,7 @@ export class AlbumPageComponent implements OnInit {
 
   loadMore(pageNumber: number) {
     this.photoService.getByAlbum(this.album.id, pageNumber, Constants.PHOTOS_PAGE_SIZE)
-      .subscribe(photos => 
+      .subscribe(photos =>
         this.photos = this.photos.concat(photos)
       );
   }

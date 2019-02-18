@@ -7,8 +7,8 @@
       <p>{{photo.creationDate}}</p>
     </mat-card-content>
     <mat-card-actions *ngIf="isCurrentUser" class="card-actions">
-        <i [routerLink]="['/update-photo', photo.id]" mat-card-avatar class="material-icons">edit</i>
-        <i mat-card-avatar class="material-icons" (click)="removePhoto()">delete</i>
-      </mat-card-actions>
+      <i [routerLink]="['/update-photo', photo.id]" mat-card-avatar class="material-icons">edit</i>
+      <i mat-card-avatar class="material-icons" (click)="removePhoto()">delete</i>
+    </mat-card-actions>
   </mat-card>
 </div>

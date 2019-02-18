@@ -31,14 +31,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get formControls(){
+  get formControls() {
     return this.registerForm.controls;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.isSubmitted = true;
 
-    if (!this.registerForm.valid){
+    if (!this.registerForm.valid) {
       return;
     }
 
@@ -61,7 +61,6 @@ export class RegisterComponent implements OnInit {
         },
         error => {
           this.loading = false;
-          console.log(error.error);
         });
   }
 }

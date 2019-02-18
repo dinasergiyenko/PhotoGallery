@@ -16,7 +16,7 @@ export class PhotoPageComponent implements OnInit {
   private currentUser: User;
   private photo: Photo;
   private album: Album;
-  
+
   constructor(
     private authenticationService: AuthenticationService,
     private photoService: PhotoService,
@@ -25,8 +25,8 @@ export class PhotoPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(
-      params => {
+    this.route.paramMap
+      .subscribe(params => {
         let photoId = params.get('id');
 
         this.photoService.getPage(photoId)
@@ -42,19 +42,18 @@ export class PhotoPageComponent implements OnInit {
               this.currentUser = user;
             }
           )
-      }
-    )
+      });
   }
 
   isCurrentUser() {
     return this.currentUser && this.album && this.currentUser.id == this.album.userId;
   }
-  
+
   removeAlbum(albumId: number) {
     this.router.navigate(['/user', this.album.userId]);
   }
 
-  removePhoto(photoId: number){
+  removePhoto(photoId: number) {
     this.router.navigate(['/album', this.photo.albumId]);
   }
 }

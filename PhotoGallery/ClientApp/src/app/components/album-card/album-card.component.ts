@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Album } from 'src/app/models/album';
-import { ActivatedRoute } from '@angular/router';
 import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
@@ -8,18 +7,14 @@ import { AlbumService } from 'src/app/services/album.service';
   templateUrl: './album-card.component.html',
   styleUrls: ['./album-card.component.scss']
 })
-export class AlbumCardComponent implements OnInit {
+export class AlbumCardComponent {
   @Input() album: Album;
   @Input() isCurrentUser: boolean;
   @Output() remove = new EventEmitter<number>();
 
   constructor(
-    private route: ActivatedRoute,
     private albumService: AlbumService
   ) { }
-
-  ngOnInit() {
-  }
 
   removeAlbum() {
     if (confirm("Do you want to delete this album?")) {

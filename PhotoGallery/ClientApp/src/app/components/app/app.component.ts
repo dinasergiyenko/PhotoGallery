@@ -10,7 +10,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export class AppComponent {
   currentUser: User;
-  title = 'Photo Gallery';
 
   constructor(
     private authenticationService: AuthenticationService
@@ -18,7 +17,7 @@ export class AppComponent {
     this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
   }
 
-  isLogged(){
+  isLogged() {
     return this.currentUser !== null;
   }
 }

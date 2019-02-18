@@ -28,23 +28,24 @@ export class PhotoFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authenticationService.currentUser.subscribe(
-      user => this.albumService.getByUser(user.id).subscribe(
-        albums => this.albums = albums
-      )
-    );
+    this.authenticationService.currentUser
+      .subscribe(currentUser =>
+        this.albumService.getByUser(currentUser.id)
+          .subscribe(albums =>
+            this.albums = albums
+          )
+      );
   }
 
-  onFileUpload(event){
+  onFileUpload(event) {
     this.photo.file = event.target.files[0];
-
   }
 
-  onChoosePhotoDialog(){
+  onChoosePhotoDialog() {
     this.fileUploadButtonTouched = true;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.loading = true;
     this.onParentSubmit.emit(this.photo);
   }
