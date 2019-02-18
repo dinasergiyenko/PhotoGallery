@@ -1,13 +1,12 @@
 <mat-card>
   <mat-card-header>
-    <i mat-card-avatar class="material-icons">face</i>
+    <i mat-card-avatar class="material-icons">comment</i>
     <mat-card-title>Leave Comment</mat-card-title>
-    <mat-card-subtitle>Say something about this photo</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="addCommentForm" (ngSubmit)="onSubmit(form)" class="form" #form="ngForm">
       <mat-form-field>
-        <textarea matInput placeholder="Comment Message" type="text" rows="5" formControlName="text"></textarea>
+        <textarea matInput placeholder="Comment Message" type="text" rows="4" formControlName="text"></textarea>
       </mat-form-field>
       <div class="form-buttons">
         <button mat-flat-button [disabled]="loading" color="primary"
