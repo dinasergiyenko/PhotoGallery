@@ -7,7 +7,8 @@
       <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="removeAlbum($event)"></album-card>
     </div>
   </div>
-  <div class="grid">
-      <photo-card *ngIf="photo" [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></photo-card>
+  <div class="grid" *ngIf="photo">
+      <photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></photo-card>
+      <add-comment [photoId]="photo.id"></add-comment>
   </div>
 </div>

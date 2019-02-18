@@ -23,7 +23,8 @@ namespace PhotoGallery.Mappings
             CreateMap<AddPhotoViewModel, Photo>();
             CreateMap<UpdatePhotoViewModel, Photo>();
             CreateMap<Photo, PhotoViewModel>();
-                
+
+            CreateMap<AddCommentViewModel, Comment>();
         }
     }
 }

@@ -36,6 +36,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { UpdateAlbumGuard } from './guards/update-album.guard';
 import { UpdatePhotoGuard } from './guards/update-photo.guard';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { CommentService } from './services/comment.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { LoadMoreComponent } from './components/load-more/load-more.component';
     UserCardComponent,
     PhotoPageComponent,
     HomePageComponent,
-    LoadMoreComponent
+    LoadMoreComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import { LoadMoreComponent } from './components/load-more/load-more.component';
     UpdatePhotoGuard,
     AlbumService,
     UserService,
-    PhotoService
+    PhotoService,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

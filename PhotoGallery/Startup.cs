@@ -78,6 +78,7 @@ namespace PhotoGallery
             services.AddScoped<ITokenCreator, JwtBearerTokenCreator>();
             services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<ICommentService, CommentService>();
 
             services.AddScoped<IFileUploadService, FileUploadService>();
         }
