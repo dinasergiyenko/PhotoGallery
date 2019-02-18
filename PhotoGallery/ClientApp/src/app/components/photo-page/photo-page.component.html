@@ -6,9 +6,11 @@
     <div class="info-bar-item">
       <album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="removeAlbum($event)"></album-card>
     </div>
+    <div class="info-bar-item" *ngIf="photo">
+      <comments-section [photoId]="photo.id" [username]="user.username"></comments-section>
+    </div>
   </div>
-  <div class="grid" *ngIf="photo">
-      <photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></photo-card>
-      <add-comment [photoId]="photo.id"></add-comment>
+  <div class="grid">
+    <photo-card *ngIf="photo" [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></photo-card>
   </div>
 </div>

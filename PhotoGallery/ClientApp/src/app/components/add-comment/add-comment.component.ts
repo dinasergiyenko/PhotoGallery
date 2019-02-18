@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { Comment } from 'src/app/models/comment';
 import { CommentService } from 'src/app/services/comment.service';
@@ -10,6 +10,8 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class AddCommentComponent implements OnInit {
   @Input() photoId: number;
+  @Output() add = new EventEmitter<Comment>();
+
   addCommentForm: FormGroup;
   loading = false;
 
@@ -37,9 +39,10 @@ export class AddCommentComponent implements OnInit {
 
     this.commentService.add(comment)
       .subscribe(
-        data => {
+        comment => {
           formDirective.resetForm();
           this.loading = false;
+          this.add.emit(comment);
         },
         error => {
           this.loading = false;

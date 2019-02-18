@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models/user";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { AuthenticationService } from "./authentication.service";
 import { Comment } from "../models/comment";
 
@@ -21,6 +21,17 @@ export class CommentService {
   add(comment: Comment) {
     comment.userId = this.currentUser.id;
 
-    return this.http.post('/api/Comment/Add', comment);
+    return this.http.post<Comment>('/api/Comment/Add', comment);
+  }
+
+  getByPhoto(photoId: number, pageNumber: number, pageSize: number) {
+    let params = {
+      params: new HttpParams()
+        .set('photoId', photoId.toString())
+        .set('pageNumber', pageNumber.toString())
+        .set('pageSize', pageSize.toString())
+    };
+
+    return this.http.get<Comment[]>('/api/Comment/GetByPhoto', params)
   }
 }

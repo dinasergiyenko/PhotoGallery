@@ -66,7 +66,7 @@ namespace PhotoGallery.DataAccessLayer
             {
                 if (_commentRepository == null)
                 {
-                    _commentRepository = new GenericRepository<Comment, int>(_databaseContext);
+                    _commentRepository = new CommentRepository(_databaseContext);
                 }
 
                 return _commentRepository;

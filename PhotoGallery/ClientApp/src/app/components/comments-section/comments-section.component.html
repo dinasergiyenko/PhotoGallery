@@ -1,0 +1,7 @@
+<div class="comments-section" *ngIf="comments != null">
+  <add-comment [photoId]="photoId" (add)="add($event)"></add-comment>
+  <div *ngFor="let comment of comments" class="comment">
+    <comment-card [comment]="comment"></comment-card>
+  </div>
+  <load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></load-more>
+</div>

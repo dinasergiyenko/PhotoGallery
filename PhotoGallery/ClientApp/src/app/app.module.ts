@@ -38,6 +38,9 @@ import { UpdatePhotoGuard } from './guards/update-photo.guard';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { CommentService } from './services/comment.service';
+import { CommentCardComponent } from './components/comment-card/comment-card.component';
+import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
+import { DateFormatPipe } from './pipes/dateformat.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,10 @@ import { CommentService } from './services/comment.service';
     PhotoPageComponent,
     HomePageComponent,
     LoadMoreComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    CommentCardComponent,
+    CommentsSectionComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.comment-date {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    color: lightgray;
+    font-size: 12px;
+}
+
+.comment-items {
+    display: flex;
+    justify-content: space-between;
+}

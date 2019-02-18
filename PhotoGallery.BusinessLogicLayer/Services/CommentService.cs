@@ -39,14 +39,15 @@ namespace PhotoGallery.BusinessLogicLayer.Services
             _unitOfWork.Commit();
         }
 
-        public IEnumerable<Comment> GetByPhotoId(int photoId)
+        public IEnumerable<Comment> GetByPhotoId(int photoId, int pageNumber, int pageSize)
         {
             if (!_photoService.IsPhotoExist(photoId))
             {
                 throw new CustomValidationException("There is no such photo.");
             }
 
-            return _unitOfWork.CommentRepository.Find(x => x.PhotoId == photoId);
+            return _unitOfWork.CommentRepository
+                .Find(x => x.PhotoId == photoId, pageNumber, pageSize);
         }
     }
 }

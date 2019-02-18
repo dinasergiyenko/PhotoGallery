@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +44,17 @@ namespace PhotoGallery.Controllers
 
             _commentService.Add(comment);
 
-            return Ok();
+            return Ok(_mapper.Map<CommentViewModel>(comment));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult GetByPhoto(int photoId, int pageNumber, int pageSize)
+        {
+            var comments = _commentService.GetByPhotoId(photoId, pageNumber, pageSize)
+                .OrderBy(x => x.CreationDate);
+
+            return Ok(_mapper.Map<IEnumerable<CommentViewModel>>(comments));
         }
 
         public Comment GetMappedComment(AddCommentViewModel viewModel)

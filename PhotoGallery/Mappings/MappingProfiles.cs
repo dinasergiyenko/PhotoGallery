@@ -25,6 +25,8 @@ namespace PhotoGallery.Mappings
             CreateMap<Photo, PhotoViewModel>();
 
             CreateMap<AddCommentViewModel, Comment>();
+            CreateMap<Comment, CommentViewModel>()
+                .ForMember(dest => dest.Username, options => options.MapFrom(src => src.User.Login));
         }
     }
 }
