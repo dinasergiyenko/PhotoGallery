@@ -33,9 +33,8 @@ export class UpdatePhotoComponent implements OnInit {
   onSubmit(photo: Photo) {
     this.photoService.update(photo)
       .subscribe(
-        data => {
-          this.router.navigate(['/']);
-          //this.router.navigate(['/photo', this.photo.id])
+        photoId => {
+            this.router.navigate(['/photo', photoId]);
         },
         error => {
           this.loading = false;

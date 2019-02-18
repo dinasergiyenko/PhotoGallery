@@ -116,7 +116,7 @@ namespace PhotoGallery.Controllers
 
             _photoService.Update(photo);
 
-            return Ok(viewModel.UserId);
+            return Ok(photo.Id);
         }
 
         [HttpGet]
