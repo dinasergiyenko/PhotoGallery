@@ -37,7 +37,7 @@ namespace PhotoGallery.DataAccessLayer.Repositories
 
         public virtual IEnumerable<TEntity> GetAll()
         {
-            return DbSet.AsEnumerable();
+            return Find(x => true).AsEnumerable();
         }
 
         public virtual void RemoveById(TKey id)
