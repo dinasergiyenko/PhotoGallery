@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PhotoGallery.DataAccessLayer.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,7 @@ namespace PhotoGallery.DataAccessLayer.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(maxLength: 256, nullable: false),
-                    Descirption = table.Column<string>(maxLength: 1028, nullable: true),
+                    Description = table.Column<string>(maxLength: 1028, nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

@@ -10,8 +10,8 @@ using PhotoGallery.DataAccessLayer;
 namespace PhotoGallery.DataAccessLayer.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20181209220544_Renamed")]
-    partial class Renamed
+    [Migration("20190219150731_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
