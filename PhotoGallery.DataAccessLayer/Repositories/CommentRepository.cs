@@ -25,5 +25,10 @@ namespace PhotoGallery.DataAccessLayer.Repositories
             return GetPage(query, pageNumber, pageSize)
                 .AsEnumerable();
         }
+
+        public override Comment Get(int id)
+        {
+            return Find(x => x.Id == id).FirstOrDefault();
+        }
     }
 }
