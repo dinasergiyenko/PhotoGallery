@@ -15,63 +15,19 @@ namespace PhotoGallery.DataAccessLayer
             _databaseContext = databaseContext;
         }
 
-        public IRepository<User, int> UserRepository
-        {
-            get
-            {
-                if (_userRepository == null)
-                {
-                    _userRepository = new UserRepository(_databaseContext);
-                }
-
-                return _userRepository;
-            }
-        }
+        public IRepository<User, int> UserRepository => _userRepository ?? (_userRepository = new UserRepository(_databaseContext));
 
         private IRepository<User, int> _userRepository;
 
-        public IRepository<Album, int> AlbumRepository
-        {
-            get
-            {
-                if (_albumRepository == null)
-                {
-                    _albumRepository = new AlbumRepository(_databaseContext);
-                }
-
-                return _albumRepository;
-            }
-        }
+        public IRepository<Album, int> AlbumRepository => _albumRepository ?? (_albumRepository = new AlbumRepository(_databaseContext));
 
         private IRepository<Album, int> _albumRepository;
 
-        public IRepository<Photo, int> PhotoRepository
-        {
-            get
-            {
-                if (_photoRepository == null)
-                {
-                    _photoRepository = new PhotoRepository(_databaseContext);
-                }
-
-                return _photoRepository;
-            }
-        }
+        public IRepository<Photo, int> PhotoRepository => _photoRepository ?? (_photoRepository = new PhotoRepository(_databaseContext));
 
         private IRepository<Photo, int> _photoRepository;
 
-        public IRepository<Comment, int> CommentRepository
-        {
-            get
-            {
-                if (_commentRepository == null)
-                {
-                    _commentRepository = new CommentRepository(_databaseContext);
-                }
-
-                return _commentRepository;
-            }
-        }
+        public IRepository<Comment, int> CommentRepository => _commentRepository ?? (_commentRepository = new CommentRepository(_databaseContext));
 
         private IRepository<Comment, int> _commentRepository;
 
@@ -91,10 +47,7 @@ namespace PhotoGallery.DataAccessLayer
 
         public void Dispose()
         {
-            if (_databaseContext != null)
-            {
-                _databaseContext.Dispose();
-            }
+            _databaseContext?.Dispose();
         }
     }
 }
