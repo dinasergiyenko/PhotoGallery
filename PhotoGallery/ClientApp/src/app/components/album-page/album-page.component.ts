@@ -14,10 +14,10 @@ import { Constants } from 'src/app/common/constants';
   styleUrls: ['./album-page.component.scss']
 })
 export class AlbumPageComponent implements OnInit {
-  private user: User;
-  private currentUser: User;
-  private photos: Photo[];
-  private album: Album;
+  user: User;
+  currentUser: User;
+  photos: Photo[];
+  album: Album;
 
   constructor(
     private authenticationService: AuthenticationService,

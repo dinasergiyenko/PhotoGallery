@@ -7,7 +7,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent {
-
   constructor(
     private authenticationService: AuthenticationService
   ) { }

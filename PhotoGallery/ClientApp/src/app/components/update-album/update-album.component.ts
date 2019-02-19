@@ -8,10 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './update-album.component.html',
   styleUrls: ['./update-album.component.scss']
 })
-
 export class UpdateAlbumComponent implements OnInit {
-  private loading = false;
-  private album: Album;
+  loading = false;
+  album: Album;
 
   constructor(
     private albumService: AlbumService,

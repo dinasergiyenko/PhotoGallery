@@ -13,10 +13,9 @@ import { Constants } from 'src/app/common/constants';
   styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit {
-
-  private currentUser: User;
-  private user: User;
-  private albums: Album[];
+  currentUser: User;
+  user: User;
+  albums: Album[];
 
   constructor(
     private route: ActivatedRoute,

@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-album.component.scss']
 })
 export class AddAlbumComponent {
-  private loading = false;
-  private album = new Album();
+  album = new Album();
+  loading = false;
 
   constructor(
     private albumService: AlbumService,

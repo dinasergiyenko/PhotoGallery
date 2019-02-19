@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-photo.component.scss']
 })
 export class AddPhotoComponent {
-  private photo = new Photo();
-  private loading = false;
+  photo = new Photo();
+  loading = false;
 
   constructor(
     private photoService: PhotoService,

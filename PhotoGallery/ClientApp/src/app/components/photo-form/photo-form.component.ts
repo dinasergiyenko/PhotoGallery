@@ -12,14 +12,13 @@ import { Location } from '@angular/common';
   styleUrls: ['./photo-form.component.scss']
 })
 export class PhotoFormComponent implements OnInit {
-  private albums: Album[];
-  private user: User;
-  private fileUploadButtonTouched = false;
-
   @Input() photo: Photo;
   @Input() loading;
-
   @Output() onParentSubmit = new EventEmitter<Photo>();
+
+  albums: Album[];
+  user: User;
+  fileUploadButtonTouched = false;
 
   constructor(
     private albumService: AlbumService,

@@ -10,7 +10,6 @@ import { Location } from '@angular/common';
 export class AlbumFormComponent {
   @Input() album: Album;
   @Input() loading;
-
   @Output() onParentSubmit = new EventEmitter<Album>();
 
   constructor(

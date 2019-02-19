@@ -11,6 +11,7 @@ import { Comment } from 'src/app/models/comment';
 export class CommentsSectionComponent implements OnInit {
   @Input() photoId: number;
   @Input() username: string;
+  
   comments: Comment[];
 
   constructor(

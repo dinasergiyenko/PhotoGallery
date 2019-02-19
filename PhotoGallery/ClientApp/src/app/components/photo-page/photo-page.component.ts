@@ -12,10 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./photo-page.component.scss']
 })
 export class PhotoPageComponent implements OnInit {
-  private user: User;
-  private currentUser: User;
-  private photo: Photo;
-  private album: Album;
+  user: User;
+  currentUser: User;
+  photo: Photo;
+  album: Album;
 
   constructor(
     private authenticationService: AuthenticationService,

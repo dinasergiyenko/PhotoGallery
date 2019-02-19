@@ -9,8 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./update-photo.component.scss']
 })
 export class UpdatePhotoComponent implements OnInit {
-  private loading = false;
-  private photo: Photo;
+  photo: Photo;
+  loading = false;
 
   constructor(
     private photoService: PhotoService,
