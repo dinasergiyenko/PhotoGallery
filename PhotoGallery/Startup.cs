@@ -79,6 +79,7 @@ namespace PhotoGallery
             services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             services.AddScoped<IFileUploadService, FileUploadService>();
         }

@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhotoGallery.BusinessLogicLayer.Interfaces;
 using PhotoGallery.DataAccessLayer.Entities;
@@ -7,23 +6,21 @@ using PhotoGallery.Models;
 
 namespace PhotoGallery.Controllers
 {
-    [Authorize]
     [Route("api/[controller]/[action]")]
     public class AuthenticationController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IAuthenticationService _authenticationService;
         private readonly IMapper _mapper;
 
         public AuthenticationController(
-            IUserService userService,
+            IAuthenticationService authenticationService,
             IMapper mapper
             )
         {
-            _userService = userService;
+            _authenticationService = authenticationService;
             _mapper = mapper;
         }
 
-        [AllowAnonymous]
         public IActionResult Login([FromBody]LoginViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -31,8 +28,8 @@ namespace PhotoGallery.Controllers
                 return BadRequest("Login's properties are not valid.");
             }
 
-            var token = _userService.Login(viewModel.Username, viewModel.Password);
-            var loggedUser = _userService.GetByLogin(viewModel.Username);
+            var token = _authenticationService.Login(viewModel.Username, viewModel.Password);
+            var loggedUser = _authenticationService.GetByLogin(viewModel.Username);
 
             var model = _mapper.Map<UserViewModel>(loggedUser);
             model.Token = token;
@@ -40,7 +37,6 @@ namespace PhotoGallery.Controllers
             return Ok(model);
         }
 
-        [AllowAnonymous]
         public IActionResult Register([FromBody]RegistrationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -48,7 +44,7 @@ namespace PhotoGallery.Controllers
                 return BadRequest("User's properties are not valid.");
             }
 
-            _userService.Register(_mapper.Map<User>(viewModel));
+            _authenticationService.Register(_mapper.Map<User>(viewModel));
 
             return Ok();
         }
