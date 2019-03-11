@@ -27,26 +27,26 @@ export class PhotoPageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(params => {
-        let photoId = params.get('id');
+        const photoId = params.get('id');
 
         this.photoService.getPage(photoId)
           .subscribe(photoPage => {
             this.photo = photoPage.photo;
             this.album = photoPage.album;
             this.user = photoPage.user;
-          })
+          });
 
         this.authenticationService.currentUser
           .subscribe(
             user => {
               this.currentUser = user;
             }
-          )
+          );
       });
   }
 
   isCurrentUser() {
-    return this.currentUser && this.album && this.currentUser.id == this.album.userId;
+    return this.currentUser && this.album && this.currentUser.id === this.album.userId;
   }
 
   removeAlbum(albumId: number) {

@@ -10,7 +10,7 @@ export class NoAuthorizedGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let currentUser = this.authenticationService.currentUser.value;
+    const currentUser = this.authenticationService.currentUser.value;
 
     if (currentUser) {
       this.router.navigate(['']);

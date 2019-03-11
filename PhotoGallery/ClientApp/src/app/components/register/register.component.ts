@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup
+  registerForm: FormGroup;
   loading = false;
   isRegistered = false;
   isSubmitted = false;
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    var user = new User(
+    const user = new User(
       this.formControls.username.value,
       this.formControls.password.value,
       this.formControls.firstName.value,

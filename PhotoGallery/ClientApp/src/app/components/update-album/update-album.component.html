@@ -7,7 +7,7 @@
         <mat-card-subtitle>Please, fill the form to edit the album</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <album-form (onParentSubmit)="onSubmit($event)" [(loading)]="loading" [album]="album"></album-form>
+        <album-form (parentSubmit)="onSubmit($event)" [(loading)]="loading" [album]="album"></album-form>
       </mat-card-content>
     </mat-card>
   </div>

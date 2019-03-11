@@ -26,6 +26,6 @@ export class AddAlbumComponent {
         error => {
           this.loading = false;
         }
-      )
+      );
   }
 }

@@ -27,12 +27,12 @@ export class UserPageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(params => {
-        let userId = params.get('id');
+        const userId = params.get('id');
 
         this.userService.getPage(userId, 0, Constants.ALBUMS_PAGE_SIZE)
           .subscribe(userPage => {
             this.user = userPage.user;
-            this.albums = userPage.albums
+            this.albums = userPage.albums;
           });
 
         this.authenticationService.currentUser.subscribe(
@@ -42,15 +42,15 @@ export class UserPageComponent implements OnInit {
   }
 
   isCurrentUser(albumUserId: number) {
-    return this.currentUser && this.currentUser.id == albumUserId;
+    return this.currentUser && this.currentUser.id === albumUserId;
   }
 
   remove(albumId: number) {
-    this.albums = this.albums.filter(item => item.id != albumId);
+    this.albums = this.albums.filter(item => item.id !== albumId);
   }
 
   isLoadMoreDisplayed() {
-    return this.albums && this.albums.length != 0;
+    return this.albums && this.albums.length !== 0;
   }
 
   loadMore(pageNumber: number) {

@@ -17,7 +17,7 @@ export class PhotoCardComponent {
   ) { }
 
   removePhoto() {
-    if (confirm("Do you want to delete this photo?")) {
+    if (confirm('Do you want to delete this photo?')) {
       this.photoService.remove(this.photo.id)
         .subscribe(photoId =>
           this.remove.emit(photoId)

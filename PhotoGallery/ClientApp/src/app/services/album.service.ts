@@ -20,19 +20,19 @@ export class AlbumService {
   }
 
   add(title: string, description: string) {
-    let userId = this.currentUser.id;
+    const userId = this.currentUser.id;
 
     return this.http.post('/api/Album/Add', { title, description, userId });
   }
 
   get(id: string) {
-    let params = { params: new HttpParams().set('id', id) };
+    const params = { params: new HttpParams().set('id', id) };
 
     return this.http.get<Album>('/api/Album/Get', params);
   }
 
   getPage(id: string, photosPageNumber = 0, photosPageSize = 0) {
-    let params = {
+    const params = {
       params: new HttpParams()
         .set('id', id)
         .set('photosPageNumber', photosPageNumber.toString())
@@ -43,7 +43,7 @@ export class AlbumService {
   }
 
   getByUser(userId: number, pageNumber: number = 0, pageSize: number = 0) {
-    let params = {
+    const params = {
       params: new HttpParams()
         .set('userId', userId.toString())
         .set('pageNumber', pageNumber.toString())
@@ -58,7 +58,7 @@ export class AlbumService {
   }
 
   isCurrentUser(albumId: string) {
-    let params = { params: new HttpParams().set('albumId', albumId) }
+    const params = { params: new HttpParams().set('albumId', albumId) };
 
     return this.http.get<boolean>('/api/Album/IsCurrentAlbumUser', params);
   }

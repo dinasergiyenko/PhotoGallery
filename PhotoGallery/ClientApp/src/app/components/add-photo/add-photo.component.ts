@@ -26,6 +26,6 @@ export class AddPhotoComponent {
         error => {
           this.loading = false;
         }
-      )
+      );
   }
 }

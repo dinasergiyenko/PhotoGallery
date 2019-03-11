@@ -21,11 +21,11 @@ export class UpdatePhotoComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(params => {
-        let id = params.get('id');
+        const id = params.get('id');
 
         this.photoService.get(id)
           .subscribe(photo => {
-            this.photo = photo
+            this.photo = photo;
           });
       });
   }

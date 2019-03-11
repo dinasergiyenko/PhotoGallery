@@ -39,6 +39,6 @@ export class HomePageComponent implements OnInit {
   }
 
   isLoadMoreDisplayed() {
-    return this.photos && this.photos.length != 0;
+    return this.photos && this.photos.length !== 0;
   }
 }

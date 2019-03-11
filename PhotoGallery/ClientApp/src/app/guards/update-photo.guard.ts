@@ -12,7 +12,7 @@ export class UpdatePhotoGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let photoId = route.params.id;
+    const photoId = route.params.id;
 
     return this.photoService.isCurrentUser(photoId)
       .pipe(
@@ -20,6 +20,6 @@ export class UpdatePhotoGuard implements CanActivate {
           this.router.navigate(['/']);
           return of(false);
         })
-      )
+      );
   }
 }

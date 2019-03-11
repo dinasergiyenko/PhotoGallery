@@ -8,12 +8,12 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 export class LoadMoreComponent {
   @Input() isLoadMoreDisplayed: boolean;
   @Output() loadMore = new EventEmitter<number>();
-  
+
   pageNumber = 0;
 
   constructor() { }
 
-  loadMoreClick(){
+  loadMoreClick() {
     this.pageNumber += 1;
     this.loadMore.emit(this.pageNumber);
   }

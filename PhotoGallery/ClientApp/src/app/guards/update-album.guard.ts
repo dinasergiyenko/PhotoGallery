@@ -12,7 +12,7 @@ export class UpdateAlbumGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let albumId = route.params.id;
+    const albumId = route.params.id;
 
     return this.albumService.isCurrentUser(albumId)
       .pipe(
@@ -20,6 +20,6 @@ export class UpdateAlbumGuard implements CanActivate {
           this.router.navigate(['/']);
           return of(false);
         })
-      )
+      );
   }
 }

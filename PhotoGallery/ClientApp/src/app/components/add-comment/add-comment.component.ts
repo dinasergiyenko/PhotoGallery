@@ -27,22 +27,22 @@ export class AddCommentComponent implements OnInit {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    if (this.addCommentForm.invalid){
+    if (this.addCommentForm.invalid) {
       return;
     }
 
     this.loading = true;
 
-    let comment = new Comment();
+    const comment = new Comment();
     comment.text = this.addCommentForm.controls.text.value;
     comment.photoId = this.photoId;
 
     this.commentService.add(comment)
       .subscribe(
-        comment => {
+        addedComment => {
           formDirective.resetForm();
           this.loading = false;
-          this.add.emit(comment);
+          this.add.emit(addedComment);
         },
         error => {
           this.loading = false;

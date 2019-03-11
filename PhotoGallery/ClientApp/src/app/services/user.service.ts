@@ -10,13 +10,13 @@ export class UserService {
   ) { }
 
   get(id: string) {
-    let params = { params: new HttpParams().set('userId', id) };
+    const params = { params: new HttpParams().set('userId', id) };
 
     return this.http.get<User>('/api/User/Get', params);
   }
 
   getPage(id: string, albumsPageNumber: number = 0, albumsPageSize: number = 0) {
-    let params = {
+    const params = {
       params: new HttpParams()
         .set('userId', id)
         .set('albumsPageNumber', albumsPageNumber.toString())

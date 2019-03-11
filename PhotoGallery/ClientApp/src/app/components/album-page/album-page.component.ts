@@ -30,7 +30,7 @@ export class AlbumPageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       params => {
-        let albumId = params.get('id');
+        const albumId = params.get('id');
 
         this.albumService.getPage(albumId, 0, Constants.PHOTOS_PAGE_SIZE)
           .subscribe(albumPage => {
@@ -44,11 +44,11 @@ export class AlbumPageComponent implements OnInit {
             this.currentUser = user;
           });
       }
-    )
+    );
   }
 
   isCurrentUser() {
-    return this.currentUser && this.album && this.currentUser.id == this.album.userId;
+    return this.currentUser && this.album && this.currentUser.id === this.album.userId;
   }
 
   removeAlbum(albumId: number) {
@@ -56,11 +56,11 @@ export class AlbumPageComponent implements OnInit {
   }
 
   removePhoto(photoId: number) {
-    this.photos = this.photos.filter(item => item.id != photoId);
+    this.photos = this.photos.filter(item => item.id !== photoId);
   }
 
   isLoadMoreDisplayed() {
-    return this.photos && this.photos.length != 0;
+    return this.photos && this.photos.length !== 0;
   }
 
   loadMore(pageNumber: number) {

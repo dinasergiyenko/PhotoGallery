@@ -14,6 +14,6 @@ export class AlertComponent {
   ) {
     this.alertService.alert.subscribe(alert => {
       this.snackBar.open(alert);
-    })
+    });
   }
 }

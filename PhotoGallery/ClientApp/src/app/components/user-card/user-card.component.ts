@@ -16,7 +16,7 @@ export class UserCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.displayName = this.user.firstName + ' ' + this.user.lastName;
     this.mailToLink = 'mailto:' + this.user.email;
   }

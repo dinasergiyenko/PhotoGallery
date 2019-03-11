@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { User } from "../models/user";
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { AuthenticationService } from "./authentication.service";
-import { Comment } from "../models/comment";
+import { Injectable } from '@angular/core';
+import { User } from '../models/user';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
+import { Comment } from '../models/comment';
 
 @Injectable()
 export class CommentService {
@@ -25,13 +25,13 @@ export class CommentService {
   }
 
   getByPhoto(photoId: number, pageNumber: number, pageSize: number) {
-    let params = {
+    const params = {
       params: new HttpParams()
         .set('photoId', photoId.toString())
         .set('pageNumber', pageNumber.toString())
         .set('pageSize', pageSize.toString())
     };
 
-    return this.http.get<Comment[]>('/api/Comment/GetByPhoto', params)
+    return this.http.get<Comment[]>('/api/Comment/GetByPhoto', params);
   }
 }

@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 export class AlbumFormComponent {
   @Input() album: Album;
   @Input() loading;
-  @Output() onParentSubmit = new EventEmitter<Album>();
+  @Output() parentSubmit = new EventEmitter<Album>();
 
   constructor(
     private location: Location
@@ -18,7 +18,7 @@ export class AlbumFormComponent {
 
   onSubmit() {
     this.loading = true;
-    this.onParentSubmit.emit(this.album);
+    this.parentSubmit.emit(this.album);
   }
 
   cancel() {

@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class PhotoFormComponent implements OnInit {
   @Input() photo: Photo;
   @Input() loading;
-  @Output() onParentSubmit = new EventEmitter<Photo>();
+  @Output() parentSubmit = new EventEmitter<Photo>();
 
   albums: Album[];
   user: User;
@@ -46,7 +46,7 @@ export class PhotoFormComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    this.onParentSubmit.emit(this.photo);
+    this.parentSubmit.emit(this.photo);
   }
 
   cancel() {

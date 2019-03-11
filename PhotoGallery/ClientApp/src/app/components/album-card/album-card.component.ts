@@ -17,7 +17,7 @@ export class AlbumCardComponent {
   ) { }
 
   removeAlbum() {
-    if (confirm("Do you want to delete this album?")) {
+    if (confirm('Do you want to delete this album?')) {
       this.albumService.remove(this.album.id)
         .subscribe(albumId =>
           this.remove.emit(albumId)

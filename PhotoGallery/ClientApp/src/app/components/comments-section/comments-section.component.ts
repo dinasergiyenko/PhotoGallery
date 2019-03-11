@@ -11,7 +11,7 @@ import { Comment } from 'src/app/models/comment';
 export class CommentsSectionComponent implements OnInit {
   @Input() photoId: number;
   @Input() username: string;
-  
+
   comments: Comment[];
 
   constructor(
@@ -22,11 +22,11 @@ export class CommentsSectionComponent implements OnInit {
     this.commentService.getByPhoto(this.photoId, 0, Constants.COMMENTS_PAGE_SIZE)
       .subscribe(comments => {
         this.comments = comments;
-      })
+      });
   }
 
   isLoadMoreDisplayed() {
-    return this.comments && this.comments.length != 0;
+    return this.comments && this.comments.length !== 0;
   }
 
   loadMore(pageNumber: number) {
