@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
-import { Photo } from 'src/app/models/photo';
+import { User } from 'src/app/models/user.model';
+import { Photo } from 'src/app/models/photo.model';
 import { AlbumService } from 'src/app/services/album.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Album } from 'src/app/models/album';
+import { Album } from 'src/app/models/album.model';
 import { PhotoService } from 'src/app/services/photo.service';
 import { Constants } from 'src/app/common/constants';
 

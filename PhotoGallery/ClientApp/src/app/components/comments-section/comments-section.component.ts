@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from 'src/app/services/comment.service';
 import { Constants } from 'src/app/common/constants';
-import { Comment } from 'src/app/models/comment';
+import { Comment } from 'src/app/models/comment.model';
 
 @Component({
   selector: 'comments-section',

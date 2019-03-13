@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
-import { Comment } from 'src/app/models/comment';
+import { Comment } from 'src/app/models/comment.model';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
-import { Photo } from 'src/app/models/photo';
+import { Photo } from 'src/app/models/photo.model';
 import { Router } from '@angular/router';
 
 @Component({

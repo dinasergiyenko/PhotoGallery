@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Photo } from '../models/photo';
-import { User } from '../models/user';
+import { Photo } from '../models/photo.model';
+import { User } from '../models/user.model';
 import { AuthenticationService } from './authentication.service';
-import { PhotoPage } from '../models/photoPage';
+import { PhotoPage } from '../models/photo-page.model';
 
 @Injectable()
 export class PhotoService {

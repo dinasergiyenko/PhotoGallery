@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
-import { Photo } from 'src/app/models/photo';
+import { Photo } from 'src/app/models/photo.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/user.model';
 import { Constants } from 'src/app/common/constants';
 
 @Component({

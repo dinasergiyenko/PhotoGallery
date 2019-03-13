@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
-import { Album } from 'src/app/models/album';
+import { Album } from 'src/app/models/album.model';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AlbumService } from 'src/app/services/album.service';

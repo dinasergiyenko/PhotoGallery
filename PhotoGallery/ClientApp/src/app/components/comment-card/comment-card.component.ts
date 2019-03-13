@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Comment } from 'src/app/models/comment';
+import { Comment } from 'src/app/models/comment.model';
 
 @Component({
   selector: 'comment-card',

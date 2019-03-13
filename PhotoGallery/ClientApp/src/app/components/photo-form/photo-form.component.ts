@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Photo } from 'src/app/models/photo';
+import { Photo } from 'src/app/models/photo.model';
 import { AlbumService } from 'src/app/services/album.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Album } from 'src/app/models/album';
-import { User } from 'src/app/models/user';
+import { Album } from 'src/app/models/album.model';
+import { User } from 'src/app/models/user.model';
 import { Location } from '@angular/common';
 
 @Component({

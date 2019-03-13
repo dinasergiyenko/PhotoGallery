@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Album } from 'src/app/models/album';
+import { Album } from 'src/app/models/album.model';
 import { AlbumService } from 'src/app/services/album.service';
 
 @Component({

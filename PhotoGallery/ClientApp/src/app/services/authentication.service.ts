@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class AuthenticationService {

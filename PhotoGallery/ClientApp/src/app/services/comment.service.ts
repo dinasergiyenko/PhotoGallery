@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
-import { Comment } from '../models/comment';
+import { Comment } from '../models/comment.model';
 
 @Injectable()
 export class CommentService {
