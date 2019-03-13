@@ -22,14 +22,14 @@
         <button mat-button routerLink="/add-photo">Add Photo</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
-        <logout></logout>
+        <pg-logout></pg-logout>
       </mat-toolbar-row>
     </mat-toolbar>
   </mat-sidenav>
   <mat-sidenav-content>
     <button mat-raised-button class="nav-button" (click)="sidenav.toggle()"><i
         class="material-icons">more_vert</i></button>
-    <alert></alert>
+    <pg-alert></pg-alert>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

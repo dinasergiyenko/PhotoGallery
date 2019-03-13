@@ -1,7 +1,7 @@
 <div class="comments-section" *ngIf="comments != null">
-  <add-comment [photoId]="photoId" (add)="add($event)"></add-comment>
+  <pg-add-comment [photoId]="photoId" (add)="add($event)"></pg-add-comment>
   <div *ngFor="let comment of comments" class="comment">
-    <comment-card [comment]="comment"></comment-card>
+    <pg-comment-card [comment]="comment"></pg-comment-card>
   </div>
-  <load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></load-more>
+  <pg-load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></pg-load-more>
 </div>

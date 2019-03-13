@@ -7,7 +7,8 @@
         <mat-card-subtitle>Please, fill the form to add a new album</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <album-form (parentSubmit)="onSubmit($event)" [(loading)]="loading" [album]="album"></album-form>
+        <pg-album-form (parentSubmit)="onSubmit($event)" [(loading)]="loading" [album]="album"></pg-album-form>
+
       </mat-card-content>
     </mat-card>
   </div>

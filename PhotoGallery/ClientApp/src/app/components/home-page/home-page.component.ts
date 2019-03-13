@@ -6,7 +6,7 @@ import { User } from 'src/app/models/user.model';
 import { Constants } from 'src/app/common/constants';
 
 @Component({
-  selector: 'home-page',
+  selector: 'pg-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })

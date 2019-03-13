@@ -9,7 +9,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 import { Constants } from 'src/app/common/constants';
 
 @Component({
-  selector: 'album-page',
+  selector: 'pg-album-page',
   templateUrl: './album-page.component.html',
   styleUrls: ['./album-page.component.scss']
 })

@@ -3,7 +3,7 @@ import { Photo } from 'src/app/models/photo.model';
 import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
-  selector: 'photo-card',
+  selector: 'pg-photo-card',
   templateUrl: './photo-card.component.html',
   styleUrls: ['./photo-card.component.scss']
 })

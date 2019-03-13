@@ -8,7 +8,7 @@ import { AlbumService } from 'src/app/services/album.service';
 import { Constants } from 'src/app/common/constants';
 
 @Component({
-  selector: 'user-page',
+  selector: 'pg-user-page',
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss']
 })

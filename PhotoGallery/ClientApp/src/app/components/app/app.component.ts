@@ -3,7 +3,7 @@ import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'pg-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

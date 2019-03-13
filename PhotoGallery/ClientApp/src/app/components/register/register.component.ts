@@ -4,7 +4,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
 
 @Component({
-  selector: 'register',
+  selector: 'pg-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

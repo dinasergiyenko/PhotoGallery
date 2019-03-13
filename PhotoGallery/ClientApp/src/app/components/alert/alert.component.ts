@@ -3,7 +3,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'alert',
+  selector: 'pg-alert',
   template: '',
   styleUrls: []
 })

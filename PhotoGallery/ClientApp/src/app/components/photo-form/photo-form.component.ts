@@ -7,7 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'photo-form',
+  selector: 'pg-photo-form',
   templateUrl: './photo-form.component.html',
   styleUrls: ['./photo-form.component.scss']
 })

@@ -4,7 +4,7 @@ import { Comment } from 'src/app/models/comment.model';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
-  selector: 'add-comment',
+  selector: 'pg-add-comment',
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.scss']
 })

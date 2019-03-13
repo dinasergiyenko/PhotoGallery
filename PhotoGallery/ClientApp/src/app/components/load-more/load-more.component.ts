@@ -1,7 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'load-more',
+  selector: 'pg-load-more',
   templateUrl: './load-more.component.html',
   styleUrls: ['./load-more.component.scss']
 })

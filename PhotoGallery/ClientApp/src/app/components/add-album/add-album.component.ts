@@ -4,7 +4,7 @@ import { Album } from 'src/app/models/album.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'add-album',
+  selector: 'pg-add-album',
   templateUrl: './add-album.component.html',
   styleUrls: ['./add-album.component.scss']
 })

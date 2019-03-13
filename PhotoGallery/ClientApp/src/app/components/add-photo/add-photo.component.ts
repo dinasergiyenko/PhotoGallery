@@ -4,7 +4,7 @@ import { Photo } from 'src/app/models/photo.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'add-photo',
+  selector: 'pg-add-photo',
   templateUrl: './add-photo.component.html',
   styleUrls: ['./add-photo.component.scss']
 })

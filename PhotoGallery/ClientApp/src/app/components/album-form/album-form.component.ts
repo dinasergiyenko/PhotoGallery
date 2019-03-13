@@ -3,7 +3,7 @@ import { Album } from 'src/app/models/album.model';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'album-form',
+  selector: 'pg-album-form',
   templateUrl: './album-form.component.html',
   styleUrls: ['./album-form.component.scss']
 })

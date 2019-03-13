@@ -3,7 +3,7 @@ import { Album } from 'src/app/models/album.model';
 import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
-  selector: 'album-card',
+  selector: 'pg-album-card',
   templateUrl: './album-card.component.html',
   styleUrls: ['./album-card.component.scss']
 })

@@ -4,7 +4,7 @@ import { AlbumService } from 'src/app/services/album.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'update-album',
+  selector: 'pg-update-album',
   templateUrl: './update-album.component.html',
   styleUrls: ['./update-album.component.scss']
 })

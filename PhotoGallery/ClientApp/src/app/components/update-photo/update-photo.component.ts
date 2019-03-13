@@ -4,7 +4,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'update-photo',
+  selector: 'pg-update-photo',
   templateUrl: './update-photo.component.html',
   styleUrls: ['./update-photo.component.scss']
 })

@@ -4,7 +4,7 @@ import { Constants } from 'src/app/common/constants';
 import { Comment } from 'src/app/models/comment.model';
 
 @Component({
-  selector: 'comments-section',
+  selector: 'pg-comments-section',
   templateUrl: './comments-section.component.html',
   styleUrls: ['./comments-section.component.scss']
 })

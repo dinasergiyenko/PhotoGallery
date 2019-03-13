@@ -4,7 +4,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login',
+  selector: 'pg-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
