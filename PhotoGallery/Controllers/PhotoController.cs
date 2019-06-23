@@ -8,9 +8,12 @@ using PhotoGallery.Models;
 using PhotoGallery.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using PhotoGallery.BusinessLogicLayer.Infrastructure.Exceptions;
+using PhotoGallery.Common.Settings;
 
 namespace PhotoGallery.Controllers
 {
@@ -22,18 +25,21 @@ namespace PhotoGallery.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IFileUploadService _fileUploadService;
+        private readonly AppSettings _appSettings;
 
         public PhotoController(
             IPhotoService photoService,
             IMapper mapper,
             IHostingEnvironment hostingEnvironment,
-            IFileUploadService fileUploadService
+            IFileUploadService fileUploadService,
+            IOptions<AppSettings> appSettings
             )
         {
             _photoService = photoService;
             _mapper = mapper;
             _hostingEnvironment = hostingEnvironment;
             _fileUploadService = fileUploadService;
+            _appSettings = appSettings.Value;
         }
 
         [HttpPost]
@@ -150,16 +156,24 @@ namespace PhotoGallery.Controllers
         private Photo GetMappedPhoto(AddPhotoViewModel viewModel)
         {
             var photo = _mapper.Map<Photo>(viewModel);
-
-            photo.Path = UploadFile(viewModel.File);
             photo.CreationDate = DateTime.Now;
+            photo.Path = UploadFile(viewModel.File, photo.CreationDate);
 
             return photo;
         }
 
-        private string UploadFile(IFormFile file)
+        private string UploadFile(IFormFile file, DateTime creationDate)
         {
-            return _fileUploadService.Upload(file, _hostingEnvironment.WebRootPath);
+            var photosPath = GetPhotoUploadingPath(creationDate);
+
+            return Path.Combine(
+                photosPath,
+                _fileUploadService.Upload(file, Path.Combine(_hostingEnvironment.WebRootPath, photosPath)));
+        }
+
+        private string GetPhotoUploadingPath(DateTime creationDate)
+        {
+            return string.Format(_appSettings.PhotosPath, creationDate);
         }
     }
 }

@@ -7,5 +7,7 @@
         public string JwtBearerKey { get; set; }
 
         public int JwtBearerLifeTime { get; set; }
+
+        public string PhotosPath { get; set; }
     }
 }

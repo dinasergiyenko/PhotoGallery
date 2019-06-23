@@ -14,6 +14,8 @@ namespace PhotoGallery.Services
 
             if (file.Length > 0)
             {
+                Directory.CreateDirectory(folderPath);
+
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     file.CopyTo(stream);
