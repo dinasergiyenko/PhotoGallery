@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pg-register',
@@ -11,12 +12,12 @@ import { User } from 'src/app/models/user.model';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
-  isRegistered = false;
   isSubmitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -57,7 +58,7 @@ export class RegisterComponent implements OnInit {
     this.authenticationService.register(user)
       .subscribe(
         data => {
-          this.isRegistered = true;
+          this.router.navigate(['/login']);
         },
         error => {
           this.loading = false;
