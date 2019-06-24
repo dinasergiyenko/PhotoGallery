@@ -41,6 +41,7 @@ import { CommentService } from './services/comment.service';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
 import { DateFormatPipe } from './pipes/dateformat.pipe';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { DateFormatPipe } from './pipes/dateformat.pipe';
     AddCommentComponent,
     CommentCardComponent,
     CommentsSectionComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

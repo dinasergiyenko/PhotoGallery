@@ -31,14 +31,9 @@ namespace PhotoGallery.Middlewares
 
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var code = context.Response.StatusCode;
-
-            if (exception is CustomValidationException)
-            {
-                code = (int)HttpStatusCode.BadRequest;
-            }
-
-            context.Response.StatusCode = code;
+            context.Response.StatusCode = exception is CustomValidationException
+                ? (int)HttpStatusCode.BadRequest
+                : (int)HttpStatusCode.InternalServerError;
 
             return context.Response.WriteAsync(exception.Message);
         }

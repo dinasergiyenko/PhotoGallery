@@ -14,6 +14,7 @@ import { PhotoPageComponent } from './components/photo-page/photo-page.component
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { UpdateAlbumGuard } from './guards/update-album.guard';
 import { UpdatePhotoGuard } from './guards/update-photo.guard';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full' },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'add-photo', component: AddPhotoComponent, canActivate: [AuthorizedGuard] },
   { path: 'update-photo/:id', component: UpdatePhotoComponent, canActivate: [AuthorizedGuard, UpdatePhotoGuard] },
   { path: 'album/:id', component: AlbumPageComponent },
-  { path: 'photo/:id', component: PhotoPageComponent }
+  { path: 'photo/:id', component: PhotoPageComponent },
+  { path: 'error', component: ErrorPageComponent }
 ];
 
 @NgModule({
