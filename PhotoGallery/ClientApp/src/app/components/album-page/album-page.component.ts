@@ -18,6 +18,7 @@ export class AlbumPageComponent implements OnInit {
   currentUser: User;
   photos: Photo[];
   album: Album;
+  isLoadMoreDisplayed: boolean;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -37,6 +38,7 @@ export class AlbumPageComponent implements OnInit {
             this.album = albumPage.album;
             this.user = albumPage.user;
             this.photos = albumPage.photos;
+            this.isLoadMoreDisplayed = this.photos.length === Constants.PHOTOS_PAGE_SIZE;
           });
 
         this.authenticationService.currentUser
@@ -59,14 +61,11 @@ export class AlbumPageComponent implements OnInit {
     this.photos = this.photos.filter(item => item.id !== photoId);
   }
 
-  isLoadMoreDisplayed() {
-    return this.photos && this.photos.length !== 0;
-  }
-
   loadMore(pageNumber: number) {
     this.photoService.getByAlbum(this.album.id, pageNumber, Constants.PHOTOS_PAGE_SIZE)
-      .subscribe(photos =>
-        this.photos = this.photos.concat(photos)
-      );
+      .subscribe(photos => {
+        this.photos = this.photos.concat(photos);
+        this.isLoadMoreDisplayed = photos.length === Constants.PHOTOS_PAGE_SIZE;
+      });
   }
 }

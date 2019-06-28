@@ -13,6 +13,7 @@ import { Constants } from 'src/app/common/constants';
 export class HomePageComponent implements OnInit {
   currentUser: User;
   photos: Photo[];
+  isLoadMoreDisplayed: boolean;
 
   constructor(
     private photoService: PhotoService,
@@ -28,6 +29,7 @@ export class HomePageComponent implements OnInit {
     this.photoService.getPhotos(0, Constants.PHOTOS_PAGE_SIZE)
       .subscribe(photos => {
         this.photos = photos;
+        this.isLoadMoreDisplayed = photos.length === Constants.PHOTOS_PAGE_SIZE;
       });
   }
 
@@ -35,10 +37,7 @@ export class HomePageComponent implements OnInit {
     this.photoService.getPhotos(pageNumber, Constants.PHOTOS_PAGE_SIZE)
       .subscribe(photos => {
         this.photos = this.photos.concat(photos);
+        this.isLoadMoreDisplayed = photos.length === Constants.PHOTOS_PAGE_SIZE;
       });
-  }
-
-  isLoadMoreDisplayed() {
-    return this.photos && this.photos.length !== 0;
   }
 }

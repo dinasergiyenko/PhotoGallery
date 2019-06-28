@@ -13,6 +13,7 @@ export class CommentsSectionComponent implements OnInit {
   @Input() username: string;
 
   comments: Comment[];
+  isLoadMoreDisplayed: boolean;
 
   constructor(
     private commentService: CommentService
@@ -22,18 +23,16 @@ export class CommentsSectionComponent implements OnInit {
     this.commentService.getByPhoto(this.photoId, 0, Constants.COMMENTS_PAGE_SIZE)
       .subscribe(comments => {
         this.comments = comments;
+        this.isLoadMoreDisplayed = comments.length === Constants.COMMENTS_PAGE_SIZE;
       });
-  }
-
-  isLoadMoreDisplayed() {
-    return this.comments && this.comments.length !== 0;
   }
 
   loadMore(pageNumber: number) {
     this.commentService.getByPhoto(this.photoId, pageNumber, Constants.COMMENTS_PAGE_SIZE)
-      .subscribe(comments =>
-        this.comments = this.comments.concat(comments)
-      );
+      .subscribe(comments => {
+        this.comments = this.comments.concat(comments);
+        this.isLoadMoreDisplayed = comments.length === Constants.COMMENTS_PAGE_SIZE;
+      });
   }
 
   add(comment: Comment) {

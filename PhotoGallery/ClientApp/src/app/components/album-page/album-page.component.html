@@ -14,6 +14,6 @@
         <pg-photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></pg-photo-card>
       </div>
     </div>
-    <pg-load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed()" (loadMore)="loadMore($event)"></pg-load-more>
+    <pg-load-more [isLoadMoreDisplayed]="isLoadMoreDisplayed" (loadMore)="loadMore($event)"></pg-load-more>
   </div>
 </div>

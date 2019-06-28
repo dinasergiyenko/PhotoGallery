@@ -16,6 +16,7 @@ export class UserPageComponent implements OnInit {
   currentUser: User;
   user: User;
   albums: Album[];
+  isLoadMoreDisplayed: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +34,7 @@ export class UserPageComponent implements OnInit {
           .subscribe(userPage => {
             this.user = userPage.user;
             this.albums = userPage.albums;
+            this.isLoadMoreDisplayed = userPage.albums.length === Constants.ALBUMS_PAGE_SIZE;
           });
 
         this.authenticationService.currentUser.subscribe(
@@ -49,14 +51,11 @@ export class UserPageComponent implements OnInit {
     this.albums = this.albums.filter(item => item.id !== albumId);
   }
 
-  isLoadMoreDisplayed() {
-    return this.albums && this.albums.length !== 0;
-  }
-
   loadMore(pageNumber: number) {
     this.albumService.getByUser(this.user.id, pageNumber, Constants.ALBUMS_PAGE_SIZE)
-      .subscribe(albums =>
-        this.albums = this.albums.concat(albums)
-      );
+      .subscribe(albums => {
+        this.albums = this.albums.concat(albums);
+        this.isLoadMoreDisplayed = albums.length === Constants.ALBUMS_PAGE_SIZE;
+      });
   }
 }
