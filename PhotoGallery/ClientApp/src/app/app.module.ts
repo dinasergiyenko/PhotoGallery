@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +42,7 @@ import { CommentCardComponent } from './components/comment-card/comment-card.com
 import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
 import { DateFormatPipe } from './pipes/dateformat.pipe';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { AppConfigService } from './services/appConfig.service';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,18 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     AlbumService,
     UserService,
     PhotoService,
-    CommentService
+    CommentService,
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [AppConfigService],
+      useFactory: (appConfigService: AppConfigService) => {
+        return () => {
+          return appConfigService.loadAppConfig();
+        };
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Album } from 'src/app/models/album.model';
 import { PhotoService } from 'src/app/services/photo.service';
-import { Constants } from 'src/app/common/constants';
+import { AppConfigService } from 'src/app/services/appConfig.service';
 
 @Component({
   selector: 'pg-album-page',
@@ -25,7 +25,8 @@ export class AlbumPageComponent implements OnInit {
     private albumService: AlbumService,
     private route: ActivatedRoute,
     private router: Router,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private appConfigService: AppConfigService
   ) { }
 
   ngOnInit() {
@@ -33,12 +34,12 @@ export class AlbumPageComponent implements OnInit {
       params => {
         const albumId = params.get('id');
 
-        this.albumService.getPage(albumId, 0, Constants.PHOTOS_PAGE_SIZE)
+        this.albumService.getPage(albumId, 0, this.appConfigService.photosPageSize)
           .subscribe(albumPage => {
             this.album = albumPage.album;
             this.user = albumPage.user;
             this.photos = albumPage.photos;
-            this.isLoadMoreDisplayed = this.photos.length === Constants.PHOTOS_PAGE_SIZE;
+            this.isLoadMoreDisplayed = this.photos.length === this.appConfigService.photosPageSize;
           });
 
         this.authenticationService.currentUser
@@ -62,10 +63,10 @@ export class AlbumPageComponent implements OnInit {
   }
 
   loadMore(pageNumber: number) {
-    this.photoService.getByAlbum(this.album.id, pageNumber, Constants.PHOTOS_PAGE_SIZE)
+    this.photoService.getByAlbum(this.album.id, pageNumber, this.appConfigService.photosPageSize)
       .subscribe(photos => {
         this.photos = this.photos.concat(photos);
-        this.isLoadMoreDisplayed = photos.length === Constants.PHOTOS_PAGE_SIZE;
+        this.isLoadMoreDisplayed = photos.length === this.appConfigService.photosPageSize;
       });
   }
 }

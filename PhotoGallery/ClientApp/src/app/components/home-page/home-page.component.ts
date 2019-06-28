@@ -3,7 +3,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 import { Photo } from 'src/app/models/photo.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
-import { Constants } from 'src/app/common/constants';
+import { AppConfigService } from 'src/app/services/appConfig.service';
 
 @Component({
   selector: 'pg-home-page',
@@ -17,7 +17,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private photoService: PhotoService,
-    private authenticationServie: AuthenticationService
+    private authenticationServie: AuthenticationService,
+    private appConfigService: AppConfigService
   ) { }
 
   ngOnInit() {
@@ -26,18 +27,18 @@ export class HomePageComponent implements OnInit {
         this.currentUser = user
       );
 
-    this.photoService.getPhotos(0, Constants.PHOTOS_PAGE_SIZE)
+    this.photoService.getPhotos(0, this.appConfigService.photosPageSize)
       .subscribe(photos => {
         this.photos = photos;
-        this.isLoadMoreDisplayed = photos.length === Constants.PHOTOS_PAGE_SIZE;
+        this.isLoadMoreDisplayed = photos.length === this.appConfigService.photosPageSize;
       });
   }
 
   loadMore(pageNumber: number) {
-    this.photoService.getPhotos(pageNumber, Constants.PHOTOS_PAGE_SIZE)
+    this.photoService.getPhotos(pageNumber, this.appConfigService.photosPageSize)
       .subscribe(photos => {
         this.photos = this.photos.concat(photos);
-        this.isLoadMoreDisplayed = photos.length === Constants.PHOTOS_PAGE_SIZE;
+        this.isLoadMoreDisplayed = photos.length === this.appConfigService.photosPageSize;
       });
   }
 }

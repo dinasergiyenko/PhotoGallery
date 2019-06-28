@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from 'src/app/services/comment.service';
-import { Constants } from 'src/app/common/constants';
 import { Comment } from 'src/app/models/comment.model';
+import { AppConfigService } from 'src/app/services/appConfig.service';
 
 @Component({
   selector: 'pg-comments-section',
@@ -16,22 +16,23 @@ export class CommentsSectionComponent implements OnInit {
   isLoadMoreDisplayed: boolean;
 
   constructor(
-    private commentService: CommentService
+    private commentService: CommentService,
+    private appConfigService: AppConfigService
   ) { }
 
   ngOnInit() {
-    this.commentService.getByPhoto(this.photoId, 0, Constants.COMMENTS_PAGE_SIZE)
+    this.commentService.getByPhoto(this.photoId, 0, this.appConfigService.commentsPageSize)
       .subscribe(comments => {
         this.comments = comments;
-        this.isLoadMoreDisplayed = comments.length === Constants.COMMENTS_PAGE_SIZE;
+        this.isLoadMoreDisplayed = comments.length === this.appConfigService.commentsPageSize;
       });
   }
 
   loadMore(pageNumber: number) {
-    this.commentService.getByPhoto(this.photoId, pageNumber, Constants.COMMENTS_PAGE_SIZE)
+    this.commentService.getByPhoto(this.photoId, pageNumber, this.appConfigService.commentsPageSize)
       .subscribe(comments => {
         this.comments = this.comments.concat(comments);
-        this.isLoadMoreDisplayed = comments.length === Constants.COMMENTS_PAGE_SIZE;
+        this.isLoadMoreDisplayed = comments.length === this.appConfigService.commentsPageSize;
       });
   }
 

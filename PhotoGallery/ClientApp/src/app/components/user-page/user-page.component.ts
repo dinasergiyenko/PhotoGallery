@@ -5,7 +5,7 @@ import { Album } from 'src/app/models/album.model';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AlbumService } from 'src/app/services/album.service';
-import { Constants } from 'src/app/common/constants';
+import { AppConfigService } from 'src/app/services/appConfig.service';
 
 @Component({
   selector: 'pg-user-page',
@@ -22,7 +22,8 @@ export class UserPageComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private authenticationService: AuthenticationService,
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private appConfigService: AppConfigService
   ) { }
 
   ngOnInit() {
@@ -30,11 +31,11 @@ export class UserPageComponent implements OnInit {
       .subscribe(params => {
         const userId = params.get('id');
 
-        this.userService.getPage(userId, 0, Constants.ALBUMS_PAGE_SIZE)
+        this.userService.getPage(userId, 0, this.appConfigService.albumsPageSize)
           .subscribe(userPage => {
             this.user = userPage.user;
             this.albums = userPage.albums;
-            this.isLoadMoreDisplayed = userPage.albums.length === Constants.ALBUMS_PAGE_SIZE;
+            this.isLoadMoreDisplayed = userPage.albums.length === this.appConfigService.albumsPageSize;
           });
 
         this.authenticationService.currentUser.subscribe(
@@ -52,10 +53,10 @@ export class UserPageComponent implements OnInit {
   }
 
   loadMore(pageNumber: number) {
-    this.albumService.getByUser(this.user.id, pageNumber, Constants.ALBUMS_PAGE_SIZE)
+    this.albumService.getByUser(this.user.id, pageNumber, this.appConfigService.albumsPageSize)
       .subscribe(albums => {
         this.albums = this.albums.concat(albums);
-        this.isLoadMoreDisplayed = albums.length === Constants.ALBUMS_PAGE_SIZE;
+        this.isLoadMoreDisplayed = albums.length === this.appConfigService.albumsPageSize;
       });
   }
 }

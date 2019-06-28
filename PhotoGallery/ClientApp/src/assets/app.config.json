@@ -1,0 +1,6 @@
+{
+  "albumsPageSize": 16,
+  "photosPageSize": 16,
+  "commentsPageSize": 3,
+  "dateDisplayFormat": "dd/MM/yyyy"
+}
