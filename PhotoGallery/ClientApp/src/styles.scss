@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import './app/components/login/login.component.scss';
-@import './app/components/register/register.component.scss';
+@import './app/auth/login/login.component.scss';
+@import './app/auth/register/register.component.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

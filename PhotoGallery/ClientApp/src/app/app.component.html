@@ -1,0 +1,35 @@
+<mat-sidenav-container class="main-container" fullscreen hasBackdrop="false">
+<mat-sidenav #sidenav mode="side">
+      <mat-toolbar color="primary">
+      <button mat-button routerLink="/">Main</button>
+    </mat-toolbar>
+    <mat-toolbar color="primary" *ngIf="!isLogged()">
+      <mat-toolbar-row>
+        <button mat-button routerLink="/login">Login</button>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button mat-button routerLink="/register">Register</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-toolbar color="primary" *ngIf="isLogged()">
+      <mat-toolbar-row>
+        <button mat-button [routerLink]="['/user', currentUser.id]">Profile</button>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button mat-button routerLink="/add-album">Add Album</button>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button mat-button routerLink="/add-photo">Add Photo</button>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <pg-logout></pg-logout>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-raised-button class="nav-button" (click)="sidenav.toggle()"><i
+        class="material-icons">more_vert</i></button>
+    <pg-alert></pg-alert>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
