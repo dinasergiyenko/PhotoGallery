@@ -4,7 +4,9 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AlbumService } from '../services/album.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UpdateAlbumGuard implements CanActivate {
   constructor(
     private router: Router,

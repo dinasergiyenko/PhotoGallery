@@ -4,7 +4,9 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { PhotoService } from '../services/photo.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UpdatePhotoGuard implements CanActivate {
   constructor(
     private router: Router,
