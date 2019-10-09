@@ -56,11 +56,17 @@ export class ViewAlbumPageComponent implements OnInit {
   }
 
   removeAlbum(albumId: number) {
-    this.router.navigate(['/user', this.album.userId]);
+    this.albumService.remove(albumId)
+      .subscribe(() =>
+        this.router.navigate(['/user', this.album.userId])
+      );
   }
 
   removePhoto(photoId: number) {
-    this.photos = this.photos.filter(item => item.id !== photoId);
+    this.photoService.remove(photoId)
+      .subscribe(() =>
+        this.photos = this.photos.filter(item => item.id !== photoId)
+      );
   }
 
   loadMore(pageNumber: number) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { AlbumService } from '@core/services/album.service';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { PhotoService } from '@core/services/photo.service';
 import { Album } from '@app/albums/shared/album.model';
@@ -21,6 +22,7 @@ export class ViewPhotoPageComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private photoService: PhotoService,
+    private albumService: AlbumService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -51,10 +53,16 @@ export class ViewPhotoPageComponent implements OnInit {
   }
 
   removeAlbum(albumId: number) {
-    this.router.navigate(['/user', this.album.userId]);
+    this.albumService.remove(albumId)
+      .subscribe(() =>
+        this.router.navigate(['/user', this.album.userId])
+      );
   }
 
   removePhoto(photoId: number) {
-    this.router.navigate(['/album', this.photo.albumId]);
+    this.photoService.remove(photoId)
+      .subscribe(() =>
+        this.router.navigate(['/album', this.photo.albumId])
+      );
   }
 }

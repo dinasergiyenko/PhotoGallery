@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { PhotoService } from '@core/services/photo.service';
 import { Photo } from '@app/photos/shared/photo.model';
 
 @Component({
@@ -13,16 +12,11 @@ export class PhotoCardComponent {
   @Input() isCurrentUser: boolean;
   @Output() remove = new EventEmitter<number>();
 
-  constructor(
-    private photoService: PhotoService
-  ) { }
+  constructor() { }
 
   removePhoto() {
     if (confirm('Do you want to delete this photo?')) {
-      this.photoService.remove(this.photo.id)
-        .subscribe(photoId =>
-          this.remove.emit(photoId)
-        );
+      this.remove.emit(this.photo.id);
     }
   }
 }

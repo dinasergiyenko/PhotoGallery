@@ -50,7 +50,10 @@ export class ViewUserPageComponent implements OnInit {
   }
 
   remove(albumId: number) {
-    this.albums = this.albums.filter(item => item.id !== albumId);
+    this.albumService.remove(albumId)
+      .subscribe(() =>
+        this.albums = this.albums.filter(item => item.id !== albumId)
+      );
   }
 
   loadMore(pageNumber: number) {
