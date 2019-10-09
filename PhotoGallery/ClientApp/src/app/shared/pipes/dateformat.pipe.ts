@@ -1,5 +1,6 @@
-import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
+
 import { AppConfigService } from '@core/services/appConfig.service';
 
 @Pipe({ name: 'dateFormat' })

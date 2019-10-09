@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Photo } from 'src/app/photos/shared/photo.model';
-import { User } from 'src/app/users/shared/user.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { AuthenticationService } from '@core/services/authentication.service';
-import { PhotoPage } from 'src/app/photos/shared/photo-page.model';
+import { Photo } from '@app/photos/shared/photo.model';
+import { PhotoPage } from '@app/photos/shared/photo-page.model';
+import { User } from '@app/users/shared/user.model';
 
 @Injectable({
   providedIn: 'root'

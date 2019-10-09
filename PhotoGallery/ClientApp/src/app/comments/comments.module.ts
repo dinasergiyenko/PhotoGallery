@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommentCardComponent } from './comment-card/comment-card.component';
-import { CommentsSectionComponent } from './comments-section/comments-section.component';
-import { SharedModule } from '../shared/shared.module';
+import { NgModule } from '@angular/core';
+
+import { CommentCardComponent } from '@app/comments/comment-card/comment-card.component';
+import { CommentsSectionComponent } from '@app/comments/comments-section/comments-section.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [

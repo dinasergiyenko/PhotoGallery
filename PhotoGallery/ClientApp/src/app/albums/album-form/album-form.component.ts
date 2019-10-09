@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Album } from 'src/app/albums/shared/album.model';
 import { Location } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+import { Album } from '@app/albums/shared/album.model';
 
 @Component({
   selector: 'pg-album-form',

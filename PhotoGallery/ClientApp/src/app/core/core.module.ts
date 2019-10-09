@@ -1,6 +1,7 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
+
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
 import { JwtInterceptor } from '@core/interceptors/jwt.interceptor';
 import { AlertComponent } from '@core/components/alert/alert.component';

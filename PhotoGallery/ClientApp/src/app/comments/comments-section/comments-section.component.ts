@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommentService } from '@core/services/comment.service';
-import { Comment } from 'src/app/comments/shared/comment.model';
+
 import { AppConfigService } from '@core/services/appConfig.service';
+import { CommentService } from '@core/services/comment.service';
+import { Comment } from '@app/comments/shared/comment.model';
 
 @Component({
   selector: 'pg-comments-section',

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { AlbumService } from '../services/album.service';
+
+import { AlbumService } from '@core/services/album.service';
 
 @Injectable({
   providedIn: 'root'

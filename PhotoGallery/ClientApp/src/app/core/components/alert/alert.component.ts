@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AlertService } from '@core/services/alert.service';
 import { MatSnackBar } from '@angular/material';
+
+import { AlertService } from '@core/services/alert.service';
 
 @Component({
   selector: 'pg-alert',

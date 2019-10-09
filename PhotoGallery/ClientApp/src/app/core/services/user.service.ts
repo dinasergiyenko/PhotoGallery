@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { User } from 'src/app/users/shared/user.model';
-import { UserPage } from 'src/app/users/shared/user-page.model';
+
+import { User } from '@app/users/shared/user.model';
+import { UserPage } from '@app/users/shared/user-page.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,11 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CustomMaterialModule } from '../material/material.module';
-import { CommonModule } from '@angular/common';
-import { DateFormatPipe } from './pipes/dateformat.pipe';
 import { RouterModule } from '@angular/router';
 
-import * as fromComponents from './components/index';
+import { CustomMaterialModule } from '@app/material/material.module';
+import { DateFormatPipe } from '@app/shared/pipes/dateformat.pipe';
+import * as fromComponents from '@app/shared/components/index';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Photo } from 'src/app/photos/shared/photo.model';
+
 import { PhotoService } from '@core/services/photo.service';
+import { Photo } from '@app/photos/shared/photo.model';
 
 @Component({
   selector: 'pg-photo-card',

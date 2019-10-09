@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/users/shared/user.model';
+
 import { AuthenticationService } from '@core/services/authentication.service';
+import { User } from '@app/users/shared/user.model';
 
 @Component({
   selector: 'pg-app-root',

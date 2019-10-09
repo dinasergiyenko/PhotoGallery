@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from '@core/services/photo.service';
-import { Photo } from 'src/app/photos/shared/photo.model';
-import { AuthenticationService } from '@core/services/authentication.service';
-import { User } from 'src/app/users/shared/user.model';
+
 import { AppConfigService } from '@core/services/appConfig.service';
+import { AuthenticationService } from '@core/services/authentication.service';
+import { PhotoService } from '@core/services/photo.service';
+import { Photo } from '@app/photos/shared/photo.model';
+import { User } from '@app/users/shared/user.model';
 
 @Component({
   selector: 'pg-home-page',

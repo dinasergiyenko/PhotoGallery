@@ -1,10 +1,11 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Photo } from 'src/app/photos/shared/photo.model';
+
 import { AlbumService } from '@core/services/album.service';
 import { AuthenticationService } from '@core/services/authentication.service';
-import { Album } from 'src/app/albums/shared/album.model';
-import { User } from 'src/app/users/shared/user.model';
-import { Location } from '@angular/common';
+import { Album } from '@app/albums/shared/album.model';
+import { Photo } from '@app/photos/shared/photo.model';
+import { User } from '@app/users/shared/user.model';
 
 @Component({
   selector: 'pg-photo-form',

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '@core/services/authentication.service';
 import { Router } from '@angular/router';
+
+import { AuthenticationService } from '@core/services/authentication.service';
 
 @Component({
   selector: 'pg-login',

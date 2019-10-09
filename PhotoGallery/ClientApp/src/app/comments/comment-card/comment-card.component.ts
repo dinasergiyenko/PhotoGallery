@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Comment } from 'src/app/comments/shared/comment.model';
+
+import { Comment } from '@app/comments/shared/comment.model';
 
 @Component({
   selector: 'pg-comment-card',

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'src/app/users/shared/user.model';
+
+import { User } from '@app/users/shared/user.model';
 
 @Component({
   selector: 'pg-user-card',

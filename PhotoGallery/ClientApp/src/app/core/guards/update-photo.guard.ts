@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { PhotoService } from '../services/photo.service';
+
+import { PhotoService } from '@core/services/photo.service';
 
 @Injectable({
   providedIn: 'root'

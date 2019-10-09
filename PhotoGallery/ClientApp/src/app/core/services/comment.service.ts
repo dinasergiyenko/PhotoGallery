@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { User } from 'src/app/users/shared/user.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 import { AuthenticationService } from '@core/services/authentication.service';
-import { Comment } from '../../comments/shared/comment.model';
+import { Comment } from '@app/comments/shared/comment.model';
+import { User } from '@app/users/shared/user.model';
 
 @Injectable({
   providedIn: 'root'

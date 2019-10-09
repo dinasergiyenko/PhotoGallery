@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/users/shared/user.model';
-import { UserService } from '@core/services/user.service';
-import { Album } from 'src/app/albums/shared/album.model';
 import { ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '@core/services/authentication.service';
+
 import { AlbumService } from '@core/services/album.service';
 import { AppConfigService } from '@core/services/appConfig.service';
+import { AuthenticationService } from '@core/services/authentication.service';
+import { UserService } from '@core/services/user.service';
+import { Album } from '@app/albums/shared/album.model';
+import { User } from '@app/users/shared/user.model';
 
 @Component({
   selector: 'pg-view-user-page',

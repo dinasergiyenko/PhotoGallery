@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '@core/services/authentication.service';
-import { User } from 'src/app/users/shared/user.model';
 import { Router } from '@angular/router';
+
+import { AuthenticationService } from '@core/services/authentication.service';
+import { User } from '@app/users/shared/user.model';
 
 @Component({
   selector: 'pg-register',

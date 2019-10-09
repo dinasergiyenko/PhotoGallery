@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { HomePageComponent } from './home-page/home-page.component';
-import { ErrorPageComponent } from '../home/error-page/error-page.component';
-import { HomeRoutingModule } from './home-routing.module';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
+import { NgModule } from '@angular/core';
+
+import { HomePageComponent } from '@app/home/home-page/home-page.component';
+import { ErrorPageComponent } from '@app/home/error-page/error-page.component';
+import { HomeRoutingModule } from '@app/home/home-routing.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
