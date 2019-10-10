@@ -70,10 +70,10 @@ export class ViewAlbumPageComponent implements OnInit {
   }
 
   loadMore(pageNumber: number) {
-    /*this.photoService.getByAlbum(this.album.id, pageNumber, this.appConfigService.photosPageSize)
+    this.photoService.getByAlbum(this.album.id, pageNumber, this.appConfigService.photosPageSize)
       .subscribe(photos => {
         this.photos = this.photos.concat(photos);
         this.isLoadMoreDisplayed = photos.length === this.appConfigService.photosPageSize;
-      });*/
+      });
   }
 }

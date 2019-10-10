@@ -4,10 +4,10 @@ import { AlbumCardComponent } from './album-card/album-card.component';
 import { PhotoCardComponent } from './photo-card/photo-card.component';
 
 export const components: any[] = [
-    LoadMoreComponent,
-    UserCardComponent,
-    AlbumCardComponent,
-    PhotoCardComponent
+  LoadMoreComponent,
+  UserCardComponent,
+  AlbumCardComponent,
+  PhotoCardComponent
 ];
 
 export { LoadMoreComponent } from './load-more/load-more.component';
