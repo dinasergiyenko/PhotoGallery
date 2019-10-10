@@ -19,6 +19,6 @@ export class AppComponent {
   }
 
   isLogged() {
-    return this.currentUser !== null;
+    return this.authenticationService.isLogged();
   }
 }

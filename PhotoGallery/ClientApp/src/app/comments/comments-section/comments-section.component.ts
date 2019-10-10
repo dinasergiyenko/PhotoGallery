@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { AuthenticationService } from '@core/services/authentication.service';
 import { AppConfigService } from '@core/services/appConfig.service';
 import { CommentService } from '@core/services/comment.service';
 import { Comment } from '@app/comments/shared/comment.model';
@@ -18,7 +19,8 @@ export class CommentsSectionComponent implements OnInit {
 
   constructor(
     private commentService: CommentService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -39,5 +41,9 @@ export class CommentsSectionComponent implements OnInit {
 
   add(comment: Comment) {
     this.comments.push(comment);
+  }
+
+  isLogged() {
+    return this.authenticationService.isLogged();
   }
 }
