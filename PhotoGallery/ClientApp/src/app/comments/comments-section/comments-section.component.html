@@ -1,5 +1,5 @@
 <div class="comments-section" *ngIf="comments != null">
-  <!--<pg-add-comment [photoId]="photoId" (add)="add($event)"></pg-add-comment>-->
+  <pg-add-comment [photoId]="photoId" (add)="add($event)"></pg-add-comment>
   <div *ngFor="let comment of comments" class="comment">
     <pg-comment-card [comment]="comment"></pg-comment-card>
   </div>
