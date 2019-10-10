@@ -22,6 +22,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         catchError(err => {
           if (err.status === 400) {
             this.alertService.alert.next(err.error);
+
+            return throwError(err);
           }
 
           if (err.status === 401) {
