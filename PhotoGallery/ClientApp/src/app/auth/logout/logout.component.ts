@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AuthenticationService } from '@core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pg-logout',
@@ -9,10 +10,12 @@ import { AuthenticationService } from '@core/services/authentication.service';
 })
 export class LogoutComponent {
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) { }
 
   logout() {
     this.authenticationService.logout();
+    this.router.navigate(['/']);
   }
 }
