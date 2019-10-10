@@ -72,6 +72,8 @@ namespace PhotoGallery
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            services.AddHttpContextAccessor();
+
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEncryptionService, EncryptionService>();

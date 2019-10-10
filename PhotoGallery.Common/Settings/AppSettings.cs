@@ -9,5 +9,7 @@
         public int JwtBearerLifeTime { get; set; }
 
         public string PhotosPath { get; set; }
+
+        public string PhotosAbsoluteUrl { get; set; }
     }
 }
