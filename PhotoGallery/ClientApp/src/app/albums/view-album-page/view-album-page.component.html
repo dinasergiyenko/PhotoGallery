@@ -1,16 +1,16 @@
-<div class="page-container">
+<div class="container--full">
   <div class="info-bar">
-    <div class="info-bar-item">
+    <div class="info-bar__item">
       <pg-user-card *ngIf="user" [user]="user" [isCurrentUser]="isCurrentUser()"></pg-user-card>
     </div>
-    <div class="info-bar-item">
+    <div class="info-bar__item">
       <pg-album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="removeAlbum($event)">
       </pg-album-card>
     </div>
   </div>
-  <div class="page-content">
+  <div class="container__content">
     <div *ngIf="photos != null" class="grid">
-      <div *ngFor="let photo of photos" class="grid-item">
+      <div *ngFor="let photo of photos" class="grid__item">
         <pg-photo-card [photo]="photo" [isCurrentUser]="isCurrentUser()" (remove)="removePhoto($event)"></pg-photo-card>
       </div>
     </div>

@@ -1,23 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-@import './app/auth/login/login.component.scss';
-@import './app/auth/register/register.component.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.form {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
+html, body {
+    height: 100%;
 }
 
-.form-buttons {
-    display: flex;
-    flex-direction: column;
-
-    .form-button {
-        margin: 3px 0;
-    }
+body {
+    margin: 0;
+    font-family: Roboto,
+    "Helvetica Neue", sans-serif;
 }
 
 a {
@@ -30,72 +20,3 @@ p {
     margin-block-end: 0;
 }
 
-.page-container {
-    display: flex;
-    padding: 20px;
-    padding-left: 36px;
-}
-
-.page-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.update-page-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-}
-
-.info-bar {
-    min-width: 270px;
-    width: 270px;
-    margin-right: 20px;
-}
-
-.info-bar-item {
-    margin-bottom: 20px;
-}
-
-.card-wrapper {
-    width: 100%;
-}
-
-.update-card-wrapper {
-    min-width: 25%;
-}
-
-.card-content-label {
-    font-weight: bolder;
-    margin-block-start: 10px;
-    margin-block-end: 5px;
-}
-
-.card-actions{
-    text-align: right;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: 0;
-}
-
-.card-actions > i {
-    cursor: pointer;
-}
-
-.card-actions > i:hover {
-    color: purple;
-}
-
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-}
-
-.grid-item {
-    flex-basis: 23%;
-    margin: 0 10px 20px 10px;
-
-}

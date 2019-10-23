@@ -1,0 +1,19 @@
+.container--full {
+    display: flex;
+    padding: 20px;
+    padding-left: 36px;
+}
+
+.container--centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.container__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+

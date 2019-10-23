@@ -1,0 +1,11 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.grid__item {
+    flex-basis: 23%;
+    margin: 0 10px 20px 10px;
+
+}

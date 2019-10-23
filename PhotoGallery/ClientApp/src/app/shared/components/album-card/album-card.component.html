@@ -1,4 +1,4 @@
-<div class="card-wrapper">
+<div class="card__wrapper">
   <mat-card>
     <mat-card-header>
       <i mat-card-avatar class="material-icons">photo_album</i>
@@ -7,9 +7,9 @@
     <mat-card-content>
       <p>{{album.description}}</p>
     </mat-card-content>
-    <mat-card-actions *ngIf="isCurrentUser" class="card-actions">
-      <i [routerLink]="['/update-album', album.id]" mat-card-avatar class="material-icons">edit</i>
-      <i mat-card-avatar class="material-icons" (click)="removeAlbum()">delete</i>
+    <mat-card-actions *ngIf="isCurrentUser" class="card__actions">
+      <i [routerLink]="['/update-album', album.id]" mat-card-avatar class="material-icons card__icon">edit</i>
+      <i mat-card-avatar class="material-icons card__icon" (click)="removeAlbum()">delete</i>
     </mat-card-actions>
   </mat-card>
 </div>

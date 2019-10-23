@@ -14,8 +14,8 @@
       (ngModelChange)="album.description=$event">
     </textarea>
   </mat-form-field>
-  <div class="form-buttons">
-    <button mat-flat-button [disabled]="loading || !albumForm.form.valid" color="primary" class="form-button">Save Album</button>
-    <a mat-flat-button [disabled]="loading" (click)="cancel()" class="form-button">Cancel</a>
+  <div class="form__buttons">
+    <button mat-flat-button [disabled]="loading || !albumForm.form.valid" color="primary" class="form__button">Save Album</button>
+    <a mat-flat-button [disabled]="loading" (click)="cancel()" class="form__button">Cancel</a>
   </div>
 </form>

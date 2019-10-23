@@ -1,0 +1,28 @@
+.card__wrapper {
+    width: 100%;
+}
+
+.card__content-label {
+    font-weight: bolder;
+    margin-block-start: 10px;
+    margin-block-end: 5px;
+}
+
+.card__actions {
+    text-align: right;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+
+    & > .card__icon {
+        cursor: pointer;
+
+        &:hover {
+            color: purple;
+        }
+    } 
+}
+
+.card__wrapper--editing {
+    min-width: 25%;
+}

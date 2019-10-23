@@ -1,7 +1,7 @@
-<div class="page-container">
+<div class="container--full">
   <div class="home-page">
     <div *ngIf="photos != null" class="grid">
-      <div *ngFor="let photo of photos" class="grid-item">
+      <div *ngFor="let photo of photos" class="grid__item">
         <pg-photo-card [photo]="photo" [isCurrentUser]="false"></pg-photo-card>
       </div>
     </div>

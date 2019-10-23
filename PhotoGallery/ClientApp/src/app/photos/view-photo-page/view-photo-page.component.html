@@ -1,12 +1,12 @@
-<div class="page-container">
+<div class="container--full">
   <div class="info-bar">
-    <div class="info-bar-item">
+    <div class="info-bar__item">
       <pg-user-card *ngIf="user" [user]="user" [isCurrentUser]="isCurrentUser()"></pg-user-card>
     </div>
-    <div class="info-bar-item">
+    <div class="info-bar__item">
       <pg-album-card *ngIf="album" [album]="album" [isCurrentUser]="isCurrentUser()" (remove)="removeAlbum($event)"></pg-album-card>
     </div>
-    <div class="info-bar-item" *ngIf="photo">
+    <div class="info-bar__item" *ngIf="photo">
       <pg-comments-section [photoId]="photo.id" [username]="user.username"></pg-comments-section>
     </div>
   </div>
