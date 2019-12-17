@@ -8,9 +8,9 @@ import { UpdateAlbumPageComponent } from '@app/albums/update-album-page/update-a
 import { ViewAlbumPageComponent } from '@app/albums/view-album-page/view-album-page.component';
 
 const routes: Routes = [
-  { path: 'add-album', component: AddAlbumPageComponent, canActivate: [AuthorizedGuard] },
-  { path: 'update-album/:id', component: UpdateAlbumPageComponent, canActivate: [AuthorizedGuard, UpdateAlbumGuard] },
-  { path: 'album/:id', component: ViewAlbumPageComponent },
+  { path: 'add', component: AddAlbumPageComponent, canActivate: [AuthorizedGuard] },
+  { path: 'update/:id', component: UpdateAlbumPageComponent, canActivate: [AuthorizedGuard, UpdateAlbumGuard] },
+  { path: ':id', component: ViewAlbumPageComponent },
 ];
 
 @NgModule({

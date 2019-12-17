@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ViewUserPageComponent } from '@app/users/view-user-page/view-user-page.component';
 
 const routes: Routes = [
-  { path: 'user/:id', component: ViewUserPageComponent },
+  { path: ':id', component: ViewUserPageComponent },
 ];
 
 @NgModule({

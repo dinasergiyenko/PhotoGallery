@@ -8,9 +8,7 @@ import { AppConfigService } from '@core/services/appConfig.service';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { CustomMaterialModule } from '@app/material/material.module';
 import { AuthModule } from '@app/auth/auth.module';
-import { PhotosModule } from '@app/photos/photos.module';
-import { AlbumsModule } from '@app/albums/albums.module';
-import { UsersModule } from '@app/users/users.module';
+import { HomeModule } from '@app/home/home.module';
 import { AppComponent } from '@app/app.component';
 
 @NgModule({
@@ -24,9 +22,7 @@ import { AppComponent } from '@app/app.component';
     CustomMaterialModule,
     CoreModule,
     AuthModule,
-    AlbumsModule,
-    PhotosModule,
-    UsersModule,
+    HomeModule,
     RouterModule
   ],
   providers: [

@@ -5,21 +5,21 @@
     </mat-toolbar>
     <mat-toolbar color="primary" *ngIf="!isLogged()">
       <mat-toolbar-row>
-        <button mat-button routerLink="/login">Login</button>
+        <button mat-button routerLink="/auth/login">Login</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
-        <button mat-button routerLink="/register">Register</button>
+        <button mat-button routerLink="/auth/register">Register</button>
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-toolbar color="primary" *ngIf="isLogged()">
       <mat-toolbar-row>
-        <button mat-button [routerLink]="['/user', currentUser.id]">Profile</button>
+        <button mat-button [routerLink]="['/users', currentUser.id]">Profile</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
-        <button mat-button routerLink="/add-album">Add Album</button>
+        <button mat-button routerLink="/albums/add">Add Album</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
-        <button mat-button routerLink="/add-photo">Add Photo</button>
+        <button mat-button routerLink="/photos/add">Add Photo</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
         <pg-logout></pg-logout>

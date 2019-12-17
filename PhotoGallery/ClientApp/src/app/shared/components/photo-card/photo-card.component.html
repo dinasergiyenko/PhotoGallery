@@ -1,13 +1,13 @@
 <div class="card__wrapper">
   <mat-card>
-    <img mat-card-image class="photo" [src]="photo.path" [routerLink]="['/photo', photo.id]" />
+    <img mat-card-image class="photo" [src]="photo.path" [routerLink]="['/photos', photo.id]" />
     <mat-card-content>
       <p><b>{{photo.title}}</b></p>
       <p>{{photo.description}}</p>
       <p>{{photo.creationDate}}</p>
     </mat-card-content>
     <mat-card-actions *ngIf="isCurrentUser" class="card__actions">
-      <i [routerLink]="['/update-photo', photo.id]" mat-card-avatar class="material-icons card__icon">edit</i>
+      <i [routerLink]="['/photos/update', photo.id]" mat-card-avatar class="material-icons card__icon">edit</i>
       <i mat-card-avatar class="material-icons card__icon" (click)="removePhoto()">delete</i>
     </mat-card-actions>
   </mat-card>
